@@ -139,13 +139,15 @@ footer {
 footer h4 {
     color: yellow;
     font: bold 25px Japanese;
+    margin-top: 2%;
+    margin-bottom: 3%;
 }
 
 footer a {
     text-decoration: none;
     color: yellow;
-    padding: 10px;
-    font: bold 15px Japanese;
+    padding: 3px;
+    font: bold 18px Japanese;
     display: block;
 }
 
@@ -158,8 +160,9 @@ footer p {
     color: yellow;
     text-align: center;
     border-radius: 20px 20px 0 0;
-    padding: 2%;
+    padding: 1%;
     font: bold 15px Japanese;
+    margin: 1%;
 }
 
 .block-label {
