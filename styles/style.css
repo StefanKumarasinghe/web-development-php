@@ -1,251 +1,404 @@
+/*This part should be included in the enhancement.css*/
+@keyframes background-design {
+
+    0%{
+        background-color:red;
+       
+    }25%{
+background-color:black;
+
+    }
+    
+    75%{
+background-color:purple;
+
+  
+    }
+    100%{
+        background-color:red;
+        
+    }
+}
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+ 
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+
+  ::-webkit-scrollbar-thumb {
+    background: black;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .range-input {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background-image:linear-gradient(90deg,#dddbae,yellow);
+    outline: 3px solid black;
+    border-radius:5px;
+    opacity: 0.7;
+
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .range-input:hover {
+    opacity: 1;
+  }
+  .range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius:2px;
+    background: black;
+    cursor: pointer;
+  }
+
+  /*This part should be included in the enhancement.css*/
+  
+  input[type="range"] {
+   vertical-align:middle;
+    width:50%;
+
+  }
+  .label-rating {
+      font-weight:bold;
+      padding:5px;
+  }
+
+  /* Used to add a user preferred font-family from google */
+
 @font-face {
     font-family: Japanese;
     src: url(JP-Light.otf);
-}
+  }
 
 body {
-    font-family: Japanese;
-    background-color: white;
-    margin: 0px;
+    font-family:Japanese;
+    background-color:white;
+    margin:0px;
+    font-weight:bold;
+ 
+}
+nav .active-nav {
+    color:red;
+}
+.header-title {
+    font-size:60px;
 }
 
 nav {
-    padding: 20px;
-    margin: 0px;
-    background-color: white;
-    box-shadow: 0 0 10px rgb(84, 84, 84);
-    border-radius: 0 0 15px 15px;
-    position: fixed;
-    top: 0px;
-    z-index: 5;
-    left: 0px;
-    width: 100%;
+    padding:0px;
+    margin:0px;
+    background-color:white;
+    box-shadow:0 0 10px rgb(84, 84, 84);
+    border-radius:0 0 15px 15px;
+    position:fixed;
+    top:0px;
+    z-index:5;
+    left:0px;
+    width:100%;
 }
-
 nav a {
-    text-decoration: none;
-    color: black;
-    padding: 2%;
-    font: bold 15px Japanese;
+   float:left;
+    text-decoration:none;
+    color:black;
+    padding:2%;
+    font-size:15px;
 }
-
 nav a:hover {
-    color: yellow;
-    transition: color 0.3s;
+    color:#eeee00;
+    transition:color 0.3s;
 }
-
 nav a:active {
-    color: red;
-    transition: color 0.3s;
+    color:red;
+    transition:color 0.3s;
+}
+header header {
+    padding:5em;
+    vertical-align:middle;
+    background-color:yellow;
+    display: grid;
+    
+    color:black;
+    column-gap: 100px;
+    grid-template-columns: 30% auto;
+    
 }
 
-header section {
-    padding: 5%;
-    background-color: yellow;
+aside  img {
+    width:30%;
+    margin:10% auto;
+    display:block;
+    
+  
+    
+}
+aside > figcaption {
+    text-align:center;
+    font-weight:bold;
 }
 
 main {
-    min-height: 100vh;
-    padding-top: 20px;
-    width: auto;
-    margin: 3% 5%;
-    box-sizing: border-box;
-}
+    min-height:100vh;
+    padding-top:20px;
+    width:auto;
+    margin:3% 5%;
+    box-sizing:border-box;
 
+}
 .quicklinks {
-    margin-top: 5%;
-    padding: 5%;
-    background-color: yellow;
+    margin-top:5%;
+    padding:5%;
+    animation:background-design 40s linear forwards infinite;
+    color:white;
 }
-
-h1 {
-    font: 50px Japanese;
-    font-weight: bold
+ h1 {
+    font-size:50px;
+    font-weight:bold
 }
-
 p {
-    font: bold 18px Japanese;
+    font-size:18px;
 }
-
-figure {
-    margin: 0px;
+figure{
+    margin:0px;
+  
 }
-
 main img {
-    max-width: 100%;
-    border-radius: 5px;
-}
+    max-width:100%;
+    margin:auto;
+    display:block;
 
+
+    border-radius:5px;
+    
+}
 main img:hover {
-    opacity: 0.6;
-    transition: opacity 0.3s;
-}
+   opacity:0.6;
 
+   transition:opacity 0.3s;
+    
+}
 main figcaption {
-    font: 20px Japanese;
-    margin-top: 20px;
-    text-align: center;
-    font-weight: bold;
+    font-size:20px;
+    margin-top:20px;
+    text-align:center;
+    font-weight:bold;
 }
-
 .w-40 {
-    width: 40%;
+    width:40%;
 }
-
 .w-50 {
-    width: 50%;
+    width:50%;
 }
 
 .w-75 {
-    width: 75%;
+    width:75%;
 }
 
 .flex-container {
-    display: flex !important;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+display:flex !important;
+flex-wrap:wrap;
 
+justify-content:space-around;
+
+
+}
 .flex-container-nowrap {
-    display: flex !important;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-}
-
+    display:flex !important;
+    flex-wrap:nowrap;
+    justify-content:space-around;
+    
+    
+    }
 .flex-footer {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: left;
-    text-align: center;
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:left;
+    text-align:center;
 }
 
 .flex-footer div {
-    margin: 1%;
-    width: 30%;
+    margin:1%;
+    width:33%;
 }
+.flex-container .item{
+  margin:1%;
+    width:48%;
 
-.flex-container .item {
-    margin: 1%;
-    width: 48%;
-}
-
+    }
 footer {
-    text-align: left;
-    margin: 0px;
-    background-color: white;
-    background-color: black;
-}
+    text-align:left;
+ border-top:2px solid yellow;
+    margin:0px;
+    background-color:white;
 
-footer h4 {
-    color: yellow;
-    font: bold 25px Japanese;
-    margin-top: 2%;
-    margin-bottom: 3%;
-}
 
+    background-color:black;
+   
+  
+}
+footer h4 { 
+    color:white;
+
+    
+    font-size:25px;
+    
+}
 footer a {
-    text-decoration: none;
-    color: yellow;
-    padding: 3px;
-    font: bold 18px Japanese;
-    display: block;
+    text-decoration:none;
+    color:white;
+    padding:10px;
+    font-size:16px;
 }
-
 footer a:hover {
-    opacity: 0.6;
-    transition: opacity 0.3s;
+   opacity:0.6;
+   transition:opacity 0.3s;
+}
+footer p {
+    color:white;
+    text-align:center;
+    
+
+border-radius:20px 20px 0 0;
+    padding:2%;
+    font-size:15px;
+   
+  
 }
 
-footer p {
-    color: yellow;
-    text-align: center;
-    border-radius: 20px 20px 0 0;
-    padding: 1%;
-    font: bold 15px Japanese;
-    margin: 1%;
-}
+
+
+
 
 .block-label {
-    font: bold 15px Japanese;
-    margin-bottom: 5%;
-    display: block;
+    font-size:15px;
+    margin-bottom:5%;
+    display:block;
 }
-
 .inline-label {
-    font: bold 15px Japanese;
-    margin-bottom: 5%;
-    display: inline;
+    font-size:15px;
+    margin-bottom:5%;
+    margin-right:2%;
+    display:inline;
 }
-
+.questions {
+    font-style:italic;
+}
 input[type="text"] {
-    padding: 3%;
-    font: bold 15px Japanese;
-    width: 75%;
-    margin-top: 1%;
-    border-radius: 10px;
-}
+    padding:3%;
+    font-size:15px;
+    width:70%;
+    margin-top:1%;
+    border-radius:10px;
 
+}
+select {
+    padding:2%;
+    font-size:20px;
+}
+input[type="checkbox"] {
+    padding:3%;
+    font-size:15px;
+    
+
+}
 [type="submit"] {
-    background-color: yellow;
-    padding: 3%;
-    font: bold 15px Japanese;
-    display: block;
-    margin-top: 2%;
-    width: 25%;
-    text-align: center
-}
+ background-color:yellow;
+ padding:3%;
+ font-size:15px;
 
+ margin-top:2%;
+ border:none;
+ width:25%;
+ text-align:center
+
+
+}
+[type="reset"] {
+    background-color:black;
+    padding:3%;
+    color:white;
+    font-size:15px;
+   
+    margin-top:2%;
+    border:none;
+    width:25%;
+    text-align:center
+   
+   
+   }
 legend {
-    font: bold 15px Japanese;
+    font-size:15px;
 }
-
 fieldset {
-    padding: 4%;
-    border-radius: 10px;
+    padding:4%;
+    border-radius:10px;
 }
-
 textarea {
-    width: 80%;
-    max-width: 100%;
-    font: bold 15px Japanese;
-    display: block;
-    border-radius: 10px;
-    padding: 1%;
-    resize: none;
+    width:80%;
+    max-width:100%;
+    font-size:15px;
+    display:block;
+    border-radius:10px;
+    padding:1%;
+    resize:none;
 }
-
 main h2 {
-    font: 30px Japanese;
-    font-weight: bold
+    font-size:30px;
+    font-weight:bold
 }
-
 ul li {
-    font: bold 15px Japanese;
+    font-size:15px;
 }
-
 ul.alert li {
-    list-style-type: none;
-    font: bold 15px Japanese;
-    color: white;
-    background-color: red;
-    padding: 3%;
+    list-style-type:none;
+    font-size:15px;
+    color:white;
+    background-color:red;
+    padding:3%;
     margin: 1% 0;
 }
-
 ul.pro li {
-    list-style-type: none;
-    font: bold 15px Japanese;
-    color: black;
-    background-color: yellow;
-    padding: 3%;
+    list-style-type:none;
+    font-size:15px;
+    color:black;
+    background-color:yellow;
+    padding:3%;
     margin: 1% 0;
 }
 
-table td,
-table th {
-    padding: 1%;
-    border: 1px solid black;
-    font: bold 16px Japanese;
-    text-align: center;
-    width: 20%;
+table td, table th {
+    padding:1%;
+    border:1px solid black;
+    font-size:16px;
+    text-align:center;
+    width:20%;
 }
+.breadcrumb a {
+font-weight:bold;
+text-decoration:none;
+    color:black;
+    }
+.breadcrumb a:last-child {
+   
+    color:red;
+  
+    }
+
+.breadcrumb a:first-child {
+
+color:black;
+}
+
+.float-right {
+    float:right;
+}
+
