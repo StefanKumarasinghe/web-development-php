@@ -1,115 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8" />
         <meta name="description" content="Welcome page of our Website." />
-        <meta name="author" content="name of our team" />
-        <meta name="viewport" content="initial-width=device-width" />
-        <link rel="stylesheet" href="styles/style.css">
-		<title>Quiz</title>
-	</head>
-    <body>
-        <header>
-            <nav>
-                <a href="index.html">
-                Home
+        <meta name="author" content="Developers" />
+        <meta name="viewport" content="initial-width=device-width"  />
+        <link rel="stylesheet" href="assets/css/style.css" media="screen and (min-width:999px)" />
+        <link rel="stylesheet" href="assets/css/Mstyle.css" media="screen and (max-width:999px)" />
+        <body>
+            <header>
+             <nav>
+                <a href="index.html" class="active-nav">
+                    Home
                 </a>
                 <a href="topic.html">
-                Topic
+                    Topic
                 </a>
                 <a href="quiz.html" >
-                Quiz
+                    Quiz
                 </a>
-                <a href="enhancements.html">
-                Enhancements
+                <a href="enhancement.html">
+                    Enhancements
                 </a>
-            </nav>
-            <section class="header">
-                <h1>Team Name</h1>
-                <p>Created by Team Members</p>
+
+                <a  class="float-right" >
+                    Help
+                </a>
+
+             </nav>
+             
+             <header class="header">
+                 <section>
+                 <p class="header-title" >Developers</p>
+                 <p>Created by Peter, Leon, John, Stefan and Arka </p>
+                 </section>
+                 <aside >
+
+                      <img src="logo1.png" id="logo" alt="">
+
+                <figcaption>The Symbol of the Developers</figcaption>
+
+                 </aside>
+             </header>
+            </header>
+            <main>
+                <div class="breadcrumb">
+<p><small><a href="">Home</a> | <a href="">Quiz</a></small></p>
+                </div>
+                <h1>Quiz Time!</h1>
+                <p>How long were you paying attention for?</p>
+                <form method="POST"  action="https://mercury.swin.edu.au/it000000/formtest.php">
+                <div class="flex-container-nowrap">
+                <div class="w-75">
+                <div class=" w-75 "  >
+                    <fieldset>
+                        <legend>Authentication</legend>
+                    <p>Please enter your personal details for submission</p>  
+                    <label class="inline-label" for="studentID">Student ID</label>   
+    <input type="text" id="studentID" placeholder="The ID must be between 7-10 digits" pattern="\d{7,10}" name="ID" required autofocus />
+    <label class="inline-label" for="studentID"  >First Name</label>  
+    <input type="text" placeholder="Please enter your first name" name="firstname" pattern="^[A-Za-z]+$" maxlength="30" minlength="1" required />
+    <label class="inline-label" for="studentID">Last Name</label>  
+    <input type="text" placeholder="Please enter your last name" name="lastname" pattern="^[A-Za-z]+$" maxlength="30" minlength="1" required />
+</fieldset>
+    <h2>Recap</h2>   
+    <fieldset>
+        <legend>Text Based Questions</legend>
+    <label class="block-label questions" for="Question1">Explain the advantages of Web 3.0 over Web 2.0 ?</label>
+    
+    <textarea rows="10" type="text" class="block" id="Question1" placeholder="Please type the answer to question here..." name="Question1" ></textarea>  
+   </fieldset>
+    <fieldset>
+       <legend> MCQs for you</legend>
+    
+           <p class="questions">When was Web 3.0 introduced?</p>
+    <input type="radio" value="1970" id="1970" name="Web_creation" ><label class="inline-label" for="1970">1970</label>
+    
+    <input type="radio" value="1970" id="1970" name="Web_creation" ><label class="inline-label" for="1970">1970</label>
+
+    <input type="radio" value="1970" id="1970" name="Web_creation" ><label class="inline-label" for="1970">1970</label>
+
+    <input type="radio" value="1970" id="1970" name="Web_creation" ><label class="inline-label" for="1970">1970</label>
+
+    <p class="questions">What are characteristics of Web 2.0. tick everything that applies</p>
+    <input type="checkbox" id="checkbox1" name="value[]" value="" required ><label for="checkbox1" class="inline-label" >Example 1</label>
+    <input type="checkbox" id="checkbox2" name="value[]" value=""><label for="checkbox2" class="inline-label" >Example 2</label>
+    <input type="checkbox" id="checkbox2" name="value[]" value=""><label for="checkbox2" class="inline-label" >Example 2</label>
+    <input type="checkbox" id="checkbox2" name="value[]" value=""><label for="checkbox2" class="inline-label" >Example 2</label>
+   <p class="questions" >Which from the below list is considered...</p>
+    <select name="dropdown">
+       <option value="" required >Please select an option</option>
+       <option value="" >Answer 1</option>
+       <option value="" >Answer 2</option>
+       <option value="" >Answer 3</option>
+       <option value="" >Answer 4</option>
+
+   </select>
+
+    </fieldset>
+        </div>
+        </div>
+        <div class="w-75">
+          
+            <fieldset>
+                <legend>Advance Questions Part 1</legend>
+            <label class="block-label questions" for="Question1">Explain the advantages of Web 3.0 over Web 2.0 ?</label>
+            
+            <textarea rows="10" type="text" class="block" id="Question1" placeholder="Please type the answer to question here..." name="Question1" ></textarea>  
+           </fieldset>
+            <fieldset>
+               <legend> Advance Question 2</legend>
+            
+                   <p class="questions">When was Web 3.0 introduced?</p>
+            <input type="radio" value="1970" id="1970" name="Web_creation" ><label class="inline-label" for="1970">1970</label>
+            
+            <input type="radio" value="1970" id="1970" name="Web_creation" ><label class="inline-label" for="1970">1970</label>
+        
+            <input type="radio" value="1970" id="1970" name="Web_creation" ><label class="inline-label" for="1970">1970</label>
+        
+            <input type="radio" value="1970" id="1970" name="Web_creation" ><label class="inline-label" for="1970">1970</label>
+        
+            <p class="questions">What are characteristics of Web 2.0. tick everything that applies</p>
+            <input type="checkbox" id="checkbox1" name="value[]" value="" required ><label for="checkbox1" class="inline-label" >Example 1</label>
+            <input type="checkbox" id="checkbox2" name="value[]" value=""><label for="checkbox2" class="inline-label" >Example 2</label>
+            <input type="checkbox" id="checkbox2" name="value[]" value=""><label for="checkbox2" class="inline-label" >Example 2</label>
+            <input type="checkbox" id="checkbox2" name="value[]" value=""><label for="checkbox2" class="inline-label" >Example 2</label>
+           <p class="questions" >Which from the below list is considered...</p>
+            <select name="dropdown">
+               <option value="" required >Please select an option</option>
+               <option value="" >Answer 1</option>
+               <option value="" >Answer 2</option>
+               <option value="" >Answer 3</option>
+               <option value="" >Answer 4</option>
+        
+           </select>
+        
+            </fieldset>
+    <fieldset>
+        <legend>Satisfactory test</legend>
+        <p>How confident are you in this unit</p>
+
+        <span class="label-rating" >0&starf;</span><input type="range"   id="range" name="confidence" class="range-input" value="5" step ="1" max="5" min="1"><span class="label-rating">5&starf;</span>
+        <p>Would you recommend this to your friend?</p>
+
+        <span class="label-rating" >Nah </span><input type="range"   id="range" name="confidence" class="range-input" value="5" step ="1" max="5" min="1"><span class="label-rating">Yes of Course!</span>
+        
+    </fieldset>
+    <br />
+        <input type="radio" value="1970" id="1970" name="Web_creation" ><label class="inline-label" for="1970">Do you agree to the conditions that we will be processing your data for no reason. This must be selected before submission...</label>
+        <br />
+
+    <input type="submit" class="submit-btn" value="Submit" >    <input type="reset" class="submit-btn" value="Reset" >
+        </div>
+
+       
+
+</form>
+
+
+                
+
+
+            </main>
+            <section class="quicklinks">
+                <h1>Developers</h1>
+                <p>Created by Peter, Leon, John, Stefan and Arka </p>
+            
             </section>
-        </header>
-        <main>
-            <h1>Quiz Time!</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <div class="flex-container-nowrap">
-                <div class="w-75">
-                    <div class=" w-75 "  >
-                        <h2>Authentication</h2>
-                        <label class="inline-label" for="studentID">Student ID</label>   
-                        <input type="text" id="studentID" placeholder="The ID must be between 7-10 digits" name="ID" required autofocus />
-                        <label class="inline-label" for="studentID">First Name</label>  
-                        <input type="text" placeholder="Please enter your first name" name="firstname" required />
-                        <label class="inline-label" for="studentID">Last Name</label>  
-                        <input type="text" placeholder="Please enter your last name" name="lastname" required />
-                        <h2>Recap</h2>
-                        <fieldset>
-                            <legend>Text Based Questions</legend>
-                            <label class="block-label" for="Question1">Explain the advantages of Web 3.0 over Web 2.0 ?</label>
-                            <textarea rows="10" type="text" class="block" id="Question1" placeholder="Please type the answer to question here..." name="Question1" ></textarea>
-                        </fieldset>
-                        <fieldset>
-                            <legend> MCQs for you</legend>
-                            <p>When was Web 3.0 introduced?</p>
-                            <input type="radio" value="1970" id="1970"><label class="inline-label" for="1970">1970</label>
-                            <input type="radio" value="1970" id="1970"><label class="inline-label" for="1970">1970</label>
-                            <input type="radio" value="1970" id="1970">    <label class="inline-label" for="1970">1970</label>
-                            <input type="radio" value="1970" id="1970">     <label class="inline-label" for="1970">1970</label></p>
-                            <p>Which is not a characteristic of Web 2.0?</p>
-                            <input type="radio" value="1970" id="1970"><label class="inline-label" for="1970">1970</label>
-                            <input type="radio" value="1970" id="1970"><label class="inline-label" for="1970">1970</label>
-                            <input type="radio" value="1970" id="1970">    <label class="inline-label" for="1970">1970</label>
-                            <input type="radio" value="1970" id="1970">     <label class="inline-label" for="1970">1970</label></p>
-                            <p>When was Web 3.0 introduced?</p>
-                            <input type="radio" value="1970" id="1970"><label class="inline-label" for="1970">1970</label>
-                            <input type="radio" value="1970" id="1970"><label class="inline-label" for="1970">1970</label>
-                            <input type="radio" value="1970" id="1970">    <label class="inline-label" for="1970">1970</label>
-                            <input type="radio" value="1970" id="1970">     <label class="inline-label" for="1970">1970</label></p>
-                        </fieldset>
-                        <a type="submit" class="submit-btn">Send</a>
-                    </div>
-                </div>
-                <div class="w-75">
-                    <figure>
-                        <img src="https://i.pinimg.com/736x/de/cc/c1/deccc16e319af00b746bd5a937249b52--drawing-sketches-line-drawings.jpg" alt="">
-                        <figcaption>The Symbol of the LOGO</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </main>
-        <section class="quicklinks">
-            <h1>Team Name</h1>
-            <p>Created by Team <i class="mdi mdi-wallet-membership:"></i></p>
-        </section>
-        <footer>
-            <div class="flex-footer">
-                <div>
-                    <h4>Contact any of us</h4>
-                    <a href="mailto:103804645@student.swin.edu.au">Stefan</a>
-                    <a href="mailto:103103232@student.swin.edu.au">Peter</a>
-                    <a href="mailto:103808595@student.swin.edu.au">Leon</a>
-                    <a href="mailto:103403903@student.swin.edu.au">John</a>
-                    <a href="mailto:103804645@student.swin.edu.au">Arka</a>
+            
+            
+            <footer>
+                <div class="flex-footer">
+                    <div>
+                <h4>Contact any of us</h4>
+                <a href="mailto:103804645@student.swin.edu.au">Stefan</a>
+                <a href="mailto:103103232@student.swin.edu.au">Peter </a>
+                <a href="mailto:103808595@student.swin.edu.au">Leon</a>
+                <a href="mailto:103403903@student.swin.edu.au">John</a>
+                <a href="mailto:103804645@student.swin.edu.au">Arka</a>
+                
                 </div>
                 <div>
                     <h4>Sitemap</h4>
-                    <a href="mailto:103804645@student.swin.edu.au">Welcome to Team</a>
+                    <a href="index.html#">Welcome to Team</a>
                     <a href="mailto:103804645@student.swin.edu.au">Topic</a>
                     <a href="mailto:103804645@student.swin.edu.au">Quiz</a>
                     <a href="mailto:103804645@student.swin.edu.au">Enhancements</a>
-                    <a href="mailto:103804645@student.swin.edu.au">Knowledge Base</a>
+                   
+                    </div>
+                    <div>
+                        <h4>Social Media</h4>
+                        <a href="https://facebook.com">Facebook</a>
+                        <a href="https://instagram.com">Instagram</a>
+                        <a href="https://Twitter,.com">Twitter</a>
+                        <a href="https://Discord.com">Discord</a>
+                       
+                        </div>
+                   
                 </div>
                 <div>
-                    <h4>Social Media</h4>
-                    <a href="https://facebook.com">Facebook</a>
-                    <a href="https://instagram.com">Instagram</a>
-                    <a href="https://twitter.com">Twitter</a>
-                    <a href="https://discord.com">Discord</a>
-                </div>
-            </div>
-            <div>
-                <p>All rights reserved to Developers Copyright 2022-2023</p>
-            </div>
-        </footer>
-    </body>
+                   
+                    <p>All rights reserved to Developers &copy; 2022-2023</p>
+                    </div>
+            </footer>
+            
+            
+        </body>
+    </head>
 </html>
