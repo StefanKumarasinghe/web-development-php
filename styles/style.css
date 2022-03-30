@@ -402,3 +402,8 @@ color:black;
     float:right;
 }
 
+#indexbackground{
+	background-image: url("../images/code_text_screen_webcomponent.jpg");
+	margin:0;
+	padding:0;
+}
