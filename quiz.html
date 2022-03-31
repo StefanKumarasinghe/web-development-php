@@ -7,7 +7,7 @@
         <meta name="viewport" content="initial-width=device-width">
         <link rel="stylesheet" href="styles/style.css" media="screen and (min-width:999px)">
         <link rel="stylesheet" href="assets/css/Mstyle.css" media="screen and (max-width:999px)">
-		<title>Quiz</title>
+        <title>Quiz</title>
     </head>
     <body>
         <header>
@@ -25,14 +25,14 @@
                 Enhancements
                 </a>
             </nav>
-			<section>
-				<p class="header-title">Developers</p>
-				<p>Created by Peter, Leon, John, Stefan and Arka</p>
-			</section>
-			<aside id="logo-box">
-				<img src="images/logo1.png" id="logo" alt="Site logo">
-			</aside>
-		</header>
+            <div>
+                <p class="header-title">Developers</p>
+                <p>Created by Peter, Leon, John, Stefan and Arka</p>
+            </div>
+            <aside id="logo-box">
+                <img src="images/logo1.png" id="logo" alt="Site logo">
+            </aside>
+        </header>
         <main>
             <div class="breadcrumb">
                 <p><small><a href="">Home</a> | <a href="">Quiz</a></small></p>
@@ -41,67 +41,68 @@
             <p>How long were you paying attention for?</p>
             <form method="POST" action="https://mercury.swin.edu.au/it000000/formtest.php">
                 <div class="flex-container-nowrap">
-                <div class="w-75">
                     <div class="w-75">
-                        <fieldset>
-                            <legend>Authentication</legend>
-                            <p>Please enter your personal details for submission</p>
-                            <label class="inline-label" for="studentID">Student ID</label>   
-                            <input type="text" id="studentID" placeholder="The ID must be between 7-10 digits" pattern="\d{7,10}" name="ID" required autofocus><br>
-                            <label class="inline-label" for="firstname">First Name</label>  
-                            <input type="text" placeholder="Please enter your first name" name="firstname" pattern="^[A-Za-z]+$" maxlength="30" minlength="1" required><br>
-                            <label class="inline-label" for="lastname">Last Name</label>  
-                            <input type="text" placeholder="Please enter your last name" name="lastname" pattern="^[A-Za-z]+$" maxlength="30" minlength="1" required><br>
-                        </fieldset>
-                        <h2>Recap</h2>
-                        <fieldset>
-                            <legend>Text Based Questions</legend>
-                            <label class="block-label questions" for="advantages1">Explain the advantages of Web 3.0 over Web 2.0</label>
-                            <textarea rows="10" class="block" id="advantages1" placeholder="Please type the answer to question here..." name="Question1"></textarea>
-                        </fieldset>
-                        <fieldset>
-                            <legend>MCQs for you</legend>
-                            <p class="questions">When was Web 3.0 introduced?</p>
-                            <input type="radio" value="1970" id="creation1" name="web3Creation"><label class="inline-label" for="creation1">1970</label>
-                            <input type="radio" value="1987" id="creation2" name="web3Creation"><label class="inline-label" for="creation2">1987</label>
-                            <input type="radio" value="2003" id="creation3" name="web3Creation"><label class="inline-label" for="creation3">2003</label>
-                            <input type="radio" value="2006" id="creation4" name="web3Creation"><label class="inline-label" for="creation4">2006</label>
-                            <p class="questions">What are characteristics of Web 2.0? Tick everything that applies</p>
-							<input type="checkbox" id="checkbox1" name="characteristics[]" value="Rich user experience" required><label for="checkbox1" class="inline-label">Rich user experience</label><br>
-							<input type="checkbox" id="checkbox2" name="characteristics[]" value="User participation"><label for="checkbox2" class="inline-label">User participation</label><br>
-							<input type="checkbox" id="checkbox3" name="characteristics[]" value="Read and write"><label for="checkbox3" class="inline-label">Read and write</label><br>
-							<input type="checkbox" id="checkbox4" name="characteristics[]" value="Read only"><label for="checkbox4" class="inline-label">Read only</label><br>
-                            <p class="questions" >Which from the below list is considered...</p>
-                            <select name="dropdown" required>
-                                <option value="">Please select an option</option>
-                                <option value="">User accessibility</option>
-                                <option value="">Bandwidth requirements</option>
-                                <option value="">Ability to edit</option>
-                            </select>
-                        </fieldset>
+                        <div class="w-75">
+                            <fieldset>
+                                <legend>Authentication</legend>
+                                <p>Please enter your personal details for submission</p>
+                                <label class="inline-label" for="studentID">Student ID</label>   
+                                <input type="text" id="studentID" placeholder="The ID must be between 7-10 digits" pattern="\d{7,10}" name="ID" required autofocus><br>
+                                <label class="inline-label" for="firstname">First Name</label>  
+                                <input type="text" id="firstname" placeholder="Please enter your first name" name="firstname" pattern="^[A-Za-z]+$" maxlength="30" minlength="1" required><br>
+                                <label class="inline-label" for="lastname">Last Name</label>  
+                                <input type="text" id="lastname" placeholder="Please enter your last name" name="lastname" pattern="^[A-Za-z]+$" maxlength="30" minlength="1" required><br>
+                            </fieldset>
+                            <h2>Recap</h2>
+                            <fieldset>
+                                <legend>Text Based Questions</legend>
+                                <label class="block-label questions" for="advantages1">Explain the advantages of Web 3.0 over Web 2.0</label>
+                                <textarea rows="10" class="block" id="advantages1" placeholder="Please type the answer to question here..." name="Question1"></textarea>
+                            </fieldset>
+                            <fieldset>
+                                <legend>MCQs for you</legend>
+                                <p class="questions">When was Web 3.0 introduced?</p>
+                                <input type="radio" value="1970" id="creation1" name="web3Creation"><label class="inline-label" for="creation1">1970</label>
+                                <input type="radio" value="1987" id="creation2" name="web3Creation"><label class="inline-label" for="creation2">1987</label>
+                                <input type="radio" value="2003" id="creation3" name="web3Creation"><label class="inline-label" for="creation3">2003</label>
+                                <input type="radio" value="2006" id="creation4" name="web3Creation"><label class="inline-label" for="creation4">2006</label>
+                                <p class="questions">What are characteristics of Web 2.0? Tick everything that applies</p>
+                                <input type="checkbox" id="checkbox1" name="characteristics[]" value="Rich user experience" required><label for="checkbox1" class="inline-label">Rich user experience</label><br>
+                                <input type="checkbox" id="checkbox2" name="characteristics[]" value="User participation"><label for="checkbox2" class="inline-label">User participation</label><br>
+                                <input type="checkbox" id="checkbox3" name="characteristics[]" value="Read and write"><label for="checkbox3" class="inline-label">Read and write</label><br>
+                                <input type="checkbox" id="checkbox4" name="characteristics[]" value="Read only"><label for="checkbox4" class="inline-label">Read only</label><br>
+                                <p class="questions" >Which from the below list is considered...</p>
+                                <select name="dropdown" required>
+                                    <option value="">Please select an option</option>
+                                    <option value="">User accessibility</option>
+                                    <option value="">Bandwidth requirements</option>
+                                    <option value="">Ability to edit</option>
+                                </select>
+                            </fieldset>
+                        </div>
                     </div>
                 </div>
                 <div class="w-75">
                     <fieldset>
                         <legend>Advance Questions Part 1</legend>
                         <label class="block-label questions" for="Question1">Explain the advantages of Web 3.0 over Web 2.0 ?</label>
-                        <textarea rows="10" type="text" class="block" id="Question1" placeholder="Please type the answer to question here..." name="Question1" ></textarea>
+                        <textarea rows="10" class="block" id="Question1" placeholder="Please type the answer to question here..." name="Question1" ></textarea>
                     </fieldset>
                     <fieldset>
                         <legend>Advance Question 2</legend>
                         <p class="questions">When was Web 3.0 introduced?</p>
-						<input type="radio" value="1970" id="creation1_2" name="web3Creation2"><label class="inline-label" for="creation1_2">1970</label>
-						<input type="radio" value="1987" id="creation2_2" name="web3Creation2"><label class="inline-label" for="creation2_2">1987</label>
-						<input type="radio" value="2003" id="creation3_2" name="web3Creation2"><label class="inline-label" for="creation3_2">2003</label>
-						<input type="radio" value="2006" id="creation4_2" name="web3Creation2"><label class="inline-label" for="creation4_2">2006</label>
-						<p class="questions">What are characteristics of Web 2.0? Tick everything that applies</p>
-						<input type="checkbox" id="checkbox1_2" name="characteristics2[]" value="Rich user experience" required><label for="checkbox1_2" class="inline-label">Rich user experience</label><br>
-						<input type="checkbox" id="checkbox2_2" name="characteristics2[]" value="User participation"><label for="checkbox2_2" class="inline-label">User participation</label><br>
-						<input type="checkbox" id="checkbox3_2" name="characteristics2[]" value="Read and write"><label for="checkbox3_2" class="inline-label">Read and write</label><br>
-						<input type="checkbox" id="checkbox4_2" name="characteristics2[]" value="Read only"><label for="checkbox4_2" class="inline-label">Read only</label><br>
+                        <input type="radio" value="1970" id="creation1_2" name="web3Creation2"><label class="inline-label" for="creation1_2">1970</label>
+                        <input type="radio" value="1987" id="creation2_2" name="web3Creation2"><label class="inline-label" for="creation2_2">1987</label>
+                        <input type="radio" value="2003" id="creation3_2" name="web3Creation2"><label class="inline-label" for="creation3_2">2003</label>
+                        <input type="radio" value="2006" id="creation4_2" name="web3Creation2"><label class="inline-label" for="creation4_2">2006</label>
+                        <p class="questions">What are characteristics of Web 2.0? Tick everything that applies</p>
+                        <input type="checkbox" id="checkbox1_2" name="characteristics2[]" value="Rich user experience" required><label for="checkbox1_2" class="inline-label">Rich user experience</label><br>
+                        <input type="checkbox" id="checkbox2_2" name="characteristics2[]" value="User participation"><label for="checkbox2_2" class="inline-label">User participation</label><br>
+                        <input type="checkbox" id="checkbox3_2" name="characteristics2[]" value="Read and write"><label for="checkbox3_2" class="inline-label">Read and write</label><br>
+                        <input type="checkbox" id="checkbox4_2" name="characteristics2[]" value="Read only"><label for="checkbox4_2" class="inline-label">Read only</label><br>
                         <p class="questions" >Which from the below list is considered...</p>
-                        <select name="considerations">
-                            <option value="" required="true">Please select an option</option>
+                        <select name="considerations" required>
+                            <option value="">Please select an option</option>
                             <option value="User accessibility">User accessibility</option>
                             <option value="Bandwidth requirements">Bandwidth requirements</option>
                             <option value="Ability to edit">Ability to edit</option>
@@ -120,8 +121,8 @@
             </form>
         </main>
         <section class="quicklinks">
-            <h1>Developers</h1>
-            <p>Created by Peter, Leon, John, Stefan and Arka </p>
+            <h2>Developers</h2>
+            <p>Created by Peter, Leon, John, Stefan and Arka</p>
         </section>
         <footer>
             <div class="flex-footer">
@@ -153,5 +154,4 @@
             </div>
         </footer>
     </body>
-    </head>
 </html>
