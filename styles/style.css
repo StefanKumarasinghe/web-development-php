@@ -5,6 +5,7 @@ author: Developer team
 Used to style pages for assignment
 */
 
+
 /*This part should be included in the enhancement.css*/
 
 @keyframes background-design {
@@ -36,6 +37,7 @@ Used to style pages for assignment
     opacity: 1;
 }
 
+
 /*This part should be included in the enhancement.css*/
 
 input[type="range"] {
@@ -47,6 +49,7 @@ input[type="range"] {
     font-weight: bold;
     padding: 5px;
 }
+
 
 /* Used to add a user preferred font-family from google */
 
@@ -73,7 +76,7 @@ nav .active-nav {
 nav {
     padding: 0px;
     margin: 0px;
-    background-color: white;
+    background-color: rgb(220, 220, 220);
     box-shadow: 0 0 10px rgb(84, 84, 84);
     border-radius: 0 0 15px 15px;
     position: fixed;
@@ -149,8 +152,7 @@ main {
 }
 
 h1 {
-    font-size: 50px;
-    font-weight: bold;
+    font: 50px bold Japanese;
 }
 
 p {
@@ -231,6 +233,7 @@ footer {
     margin: 0px;
     background-color: white;
     background-color: black;
+    font-style: italic;
 }
 
 footer h4 {
@@ -369,6 +372,14 @@ table th {
     width: 20%;
 }
 
+th {
+    background-color: lightgray;
+}
+
+td {
+    background-color: rgb(240, 240, 255);
+}
+
 .breadcrumb a {
     font-weight: bold;
     text-decoration: none;
@@ -394,19 +405,19 @@ table th {
 }
 
 .topicImg {
-	width: 600px;
-	height: 300px;
+    width: 600px;
+    height: 300px;
 }
 
 flex-container w-75 {
-	display: flex;
+    display: flex;
 }
 
 #topicAside {
-	width: 30%;
-	float: right;
-	border: 4px inset lightgray;
-	margin: 3em;
-	padding: 1em;
-	box-shadow: 5px 5px 3px #aaaaaa;
+    width: 30%;
+    float: right;
+    border: 4px inset lightgray;
+    margin: 3em;
+    padding: 1em;
+    box-shadow: 5px 5px 3px #aaaaaa;
 }
