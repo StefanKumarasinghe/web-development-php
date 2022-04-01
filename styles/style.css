@@ -1,3 +1,10 @@
+/*
+name: style.css
+author: Developer team
+
+Used to style pages for assignment
+*/
+
 /*This part should be included in the enhancement.css*/
 
 @keyframes background-design {
@@ -393,4 +400,13 @@ table th {
 
 flex-container w-75 {
 	display: flex;
+}
+
+#topicAside {
+	width: 30%;
+	float: right;
+	border: 4px inset lightgray;
+	margin: 3em;
+	padding: 1em;
+	box-shadow: 5px 5px 3px #aaaaaa;
 }
