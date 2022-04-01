@@ -385,3 +385,12 @@ table th {
     margin: 0;
     padding: 2% 5% 2% 5%;
 }
+
+.topicImg {
+	width: 600px;
+	height: 300px;
+}
+
+flex-container w-75 {
+	display: flex;
+}
