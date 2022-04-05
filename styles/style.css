@@ -363,6 +363,9 @@ ul.pro li {
     margin: 1% 0;
 }
 
+/* Table Section */
+table {border-collapse: collapse; }
+
 table td,
 table th {
     padding: 1%;
