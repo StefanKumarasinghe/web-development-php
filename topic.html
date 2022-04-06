@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="description" content="Welcome page of our Website.">
         <meta name="author" content="Developers">
-        <meta name="viewport" content="initial-width=device-width">
-        <link rel="stylesheet" href="styles/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="images/wwwlogo.jpg">
+        <link rel="stylesheet" href="styles/Mstyle.css" media="screen and (max-width:999px)">
+        <link rel="stylesheet" href="styles/style.css"  media="screen and (min-width:999px)">
         <title>Topic</title>
     </head>
     <body>
@@ -32,11 +34,11 @@
                 <img src="images/logo1.png" id="logo" alt="Site logo">
             </aside>
         </header>
-		<aside id="topicAside">
-		Servers have always been required to host all types of websites; from Web 1.0 to 3.0 and into the future!
-		</aside>
-        <main>
+	
+        <main id="topic-page" class="w-100 flex-container-nowrap ">
+            <div id="content">
             <h1>Topic</h1>
+            
             <section>
                 <h2>What is a Website?</h2>
                 <p>It's a way to gather information, connect with others, and create content on the internet. 
@@ -112,13 +114,23 @@
                         </tr>
                     </tbody>
                 </table>
-                <h3>References</h3>
-                <ul>
-                    <li><a href="https://www.investopedia.com/web-20-web-30-5208698#:~:text=Web%202.0%20is%20the%20current%20version%20of%20the%20web%20with,exponential%20growth%20of%20Web%202.0." target="_blank">Web 2.0 and Web 3.0 Definitions (investopedia.com).</a> </li>
-                    <li><a href="https://101blockchains.com/web-2-0-and-web-3-0/" target="_blank">Difference between Web 2.0 and Web 3.0 - 101 Blockchains</a></li>
-                    <li><a href="https://www.geeksforgeeks.org/web-1-0-web-2-0-and-web-3-0-with-their-difference/" target="_blank">Web 1.0, Web 2.0 and Web 3.0 with their difference</a></li>
-                </ul>
+               
             </section>
+        </div>
+        <div>
+            <aside id="topicAside">
+                <h4>Did you know?</h4>
+            Servers have always been required to host all types of websites; from Web 1.0 to 3.0 and into the future!
+        <h4>Would you like to know more?</h4>	
+        <p>If you want to discover more in this page, we dare you to dig into these links</p>
+        <h3>References</h3>
+        <ul>
+            <li><a href="https://www.investopedia.com/web-20-web-30-5208698#:~:text=Web%202.0%20is%20the%20current%20version%20of%20the%20web%20with,exponential%20growth%20of%20Web%202.0." target="_blank">Web 2.0 and Web 3.0 Definitions (investopedia.com).</a> </li>
+            <li><a href="https://101blockchains.com/web-2-0-and-web-3-0/" target="_blank">Difference between Web 2.0 and Web 3.0 - 101 Blockchains</a></li>
+            <li><a href="https://www.geeksforgeeks.org/web-1-0-web-2-0-and-web-3-0-with-their-difference/" target="_blank">Web 1.0, Web 2.0 and Web 3.0 with their difference</a></li>
+        </ul>
+        </aside>
+        </div>
         </main>
         <section class="quicklinks">
             <h2>Developers</h2>
