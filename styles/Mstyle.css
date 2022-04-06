@@ -1,0 +1,438 @@
+/*
+name: style.css
+author: Developer team
+
+Used to style pages for assignment
+*/
+
+
+/*This part should be included in the enhancement.css*/
+
+@keyframes background-design {
+    0% {
+        background-color: red;
+    }
+    25% {
+        background-color: black;
+    }
+    75% {
+        background-color: purple;
+    }
+    100% {
+        background-color: red;
+    }
+}
+
+
+
+
+.range-input {
+    width: 100%;
+    height: 5px;
+    background-image: linear-gradient(90deg, #dddbae, yellow);
+    outline: 3px solid black;
+    border-radius: 5px;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+
+.range-input:hover {
+    opacity: 1;
+}
+
+
+/*This part should be included in the enhancement.css*/
+
+input[type="range"] {
+    vertical-align: middle;
+    width: 50%;
+}
+
+.label-rating {
+    font-weight: bold;
+    padding: 5px;
+}
+
+
+/* Used to add a user preferred font-family from google */
+
+@font-face {
+    font-family: Japanese;
+    src: url(JP-Light.otf);
+}
+
+body {
+   
+    font-family: Japanese;
+    background-color: white;
+    margin: 0px;
+    font-weight: bold;
+}
+
+nav .active-nav {
+    color: red;
+}
+
+.header-title {
+    font-size: 2em;
+}
+
+nav {
+    padding: 10px;
+    margin: 0px;
+    background-color: rgb(220, 220, 220);
+    box-shadow: 0 0 10px rgb(84, 84, 84);
+    border-radius: 0 0 15px 15px;
+    position: fixed;
+    top: 0px;
+    z-index: 5;
+    left: 0px;
+    width: 100vw;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    padding: 3%;
+    
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #eeee00;
+    transition: color 0.3s;
+}
+
+nav a:active {
+    color: red;
+    transition: color 0.3s;
+}
+
+header {
+    padding: 3em;
+    vertical-align: middle;
+    background-color: yellow;
+text-align:center;
+    color: black;
+    column-gap: 100px;
+    grid-template-columns: 30% auto;
+}
+
+aside {
+    width:50%;
+    margin: 5% auto;
+    clear:both;
+    border-radius:30px;
+    display: block;
+}
+
+#logo-box {
+    float: right;
+    display:none;
+  
+}
+
+#logo {
+    width: 30%;
+    margin-top: 8%;
+    display:none;
+    float: right;
+}
+
+main {
+    min-height: 100vh;
+    width: auto;
+    margin: 3% 5%;
+    text-align:center;
+    box-sizing: border-box;
+}
+
+.quicklinks {
+    margin-top: 0%;
+    padding: 3%;
+    animation: background-design 40s linear forwards infinite;
+    color: white;
+}
+
+.quicklinks h2 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+h1 {
+    font: 50px bold Japanese;
+}
+
+p {
+    font-size: 18px;
+}
+
+figure {
+    margin: 0px;
+}
+
+main img {
+    max-width: 100%;
+border:1px solid black;
+    display: block;
+
+    border-radius: 5px;
+}
+
+main img:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+main figcaption {
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+main h1 {
+    margin-top: 0px;
+    font-family:Japanese;
+}
+
+.w-50 {
+    width: 100%;
+}
+
+.w-75 {
+    width: 100%;
+}
+
+.flex-container {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.flex-container-nowrap {
+    display: flex !important;
+    flex-wrap: wrap;
+ 
+    justify-content: space-around;
+}
+
+.flex-footer {
+    display: flex;
+    text-align:center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.flex-footer div {
+    margin: 1%;
+    width: 100%;
+}
+
+.flex-container .item {
+    margin: 1%;
+    width: 48%;
+}
+
+footer {
+    text-align: left;
+    border-top: 2px solid yellow;
+    margin: 0px;
+    background-color: white;
+    background-color: black;
+   
+}
+
+footer h4 {
+    color: white;
+    font-size: 25px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+}
+
+footer a:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+footer p {
+    color: white;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+    padding: 2%;
+    font-size: 15px;
+}
+
+.block-label {
+    font-size: 15px;
+    margin-bottom: 5%;
+    display: block;
+}
+
+.inline-label {
+    font-size: 15px;
+    margin-bottom: 5%;
+    margin-right: 2%;
+    display: inline;
+}
+
+.questions {
+    font-style: italic;
+}
+
+input[type="text"] {
+    padding: 3%;
+    font-size: 15px;
+    font-weight:bold;
+    width: 70%;
+    margin-top: 1%;
+    border-radius: 10px;
+}
+
+select {
+    padding: 2%;
+    font-size: 20px;
+}
+
+input[type="checkbox"] {
+    padding: 3%;
+    font-size: 15px;
+}
+
+[type="submit"] {
+    background-color: yellow;
+    padding: 3%;
+    font:bold 15px Japanese;
+    
+    margin-top: 2%;
+    border: none;
+    width: 25%;
+    text-align: center
+}
+
+[type="reset"] {
+    background-color: black;
+    padding: 3%;
+    color: white;
+    font:bold 15px Japanese;
+    
+    margin-top: 2%;
+    border: none;
+    width: 25%;
+    text-align: center
+}
+
+legend {
+    font-size: 15px;
+}
+
+fieldset {
+    padding: 4%;
+    border-radius: 10px;
+}
+
+textarea {
+    width: 100%;
+    font-weight:bold 15px Japanese;
+    text-align:center;
+
+   
+    display: block;
+    border-radius: 10px;
+    padding: 1%;
+    margin:1%;
+    box-sizing:border-box;
+    
+    resize: none;
+}
+
+main h2 {
+    font-size: 30px;
+    font-weight: bold
+}
+
+ul li {
+    font-size: 15px;
+    text-align:left;
+}
+
+ol li {
+    font-size: 15px;
+    list-style-type:lower-alpha;
+    text-align:justify;
+    
+}
+ol {
+
+    list-style-position:inside; 
+}
+
+/* Table Section */
+table {border-collapse: collapse; width:100%; }
+
+table td,
+table th {
+    padding: 1%;
+    border: 1px solid black;
+    font-size: 16px;
+    text-align: center;
+    width: 20%;
+}
+
+th {
+    background-color: lightgray;
+}
+
+td {
+    background-color: rgb(240, 240, 255);
+}
+
+#indexbackground {
+    background-image: url("images/bg.png");
+    margin: 0;
+    padding: 2% 5% 2% 5%;
+}
+
+.topicImg {
+   width:100%;
+}
+
+
+#topicAside {
+
+    border: 4px solid black;
+  
+    padding:3em;
+    box-shadow: 20px 20px 1px lightgray;
+}
+.learn-more {
+    padding:2em;
+    font-weight:bold;
+    color:white;
+    background-color:black;
+    text-decoration:none;
+   
+}
+#topic-page img {
+  box-shadow:20px 20px lightgray;  
+}
+#content {
+    width:100%;
+}
+#enchancements img {
+    width:90%;
+    margin:auto;
+    display:block;
+}
+details {
+    padding:1%;
+    }
+details summary {
+font:bold 20px Japanese;
+}
