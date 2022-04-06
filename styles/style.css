@@ -5,9 +5,6 @@ author: Developer team
 Used to style pages for assignment
 */
 
-
-/*This part should be included in the enhancement.css*/
-
 @keyframes background-design {
     0% {
         background-color: red;
@@ -22,27 +19,24 @@ Used to style pages for assignment
         background-color: red;
     }
 }
+
 @keyframes shadow {
     0% {
-        border:3px solid blue;
+        border: 3px solid blue;
     }
     5% {
-        border:3px solid green;
+        border: 3px solid green;
     }
     40% {
-        border:3px solid yellow;
+        border: 3px solid yellow;
     }
-
     70% {
-        border:3px solid black;
+        border: 3px solid black;
     }
     100% {
-        border:3px solid blue;
+        border: 3px solid blue;
     }
 }
-
-
-
 
 .range-input {
     width: 100%;
@@ -57,9 +51,6 @@ Used to style pages for assignment
 .range-input:hover {
     opacity: 1;
 }
-
-
-/*This part should be included in the enhancement.css*/
 
 input[type="range"] {
     vertical-align: middle;
@@ -140,7 +131,6 @@ aside {
     margin: 5% auto;
     float: right;
     display: block;
-
 }
 
 #logo-box {
@@ -174,7 +164,7 @@ main {
 }
 
 h1 {
-    font: 50px bold Japanese;
+    font: bold 50px Japanese;
 }
 
 p {
@@ -187,9 +177,8 @@ figure {
 
 main img {
     max-width: 100%;
-border:1px solid black;
+    border: 1px solid black;
     display: block;
-
     border-radius: 5px;
 }
 
@@ -207,7 +196,7 @@ main figcaption {
 
 main h1 {
     margin-top: 0px;
-    font-family:Japanese;
+    font-family: Japanese;
 }
 
 .w-40 {
@@ -369,8 +358,13 @@ ul li {
     font-size: 15px;
 }
 
+
 /* Table Section */
-table {border-collapse: collapse; width:75%; }
+
+table {
+    border-collapse: collapse;
+    width: 75%;
+}
 
 table td,
 table th {
@@ -388,9 +382,6 @@ th {
 td {
     background-color: rgb(240, 240, 255);
 }
-
-
-
 
 .float-right {
     float: right;
@@ -412,37 +403,37 @@ flex-container w-75 {
 }
 
 #topicAside {
-
-
-   animation:shadow 10s linear infinite; 
-    padding:3em;
-    border-radius:30px;
+    animation: shadow 10s linear infinite;
+    padding: 3em;
+    border-radius: 30px;
     box-shadow: 15px 15px 1px #aaaaaa;
 }
+
 .learn-more {
-    padding:1%;
-    font-weight:bold;
-    color:white;
-    background-color:black;
-    text-decoration:none;
-   
-}
-#topic-page img {
-  box-shadow:20px 20px lightgray; 
- 
-}
-#content {
-    width:50%;
+    padding: 1%;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    text-decoration: none;
 }
 
-#enchancements img {
-    width:50%;
-    margin:auto;
-    display:block;
+#topic-page img {
+    box-shadow: 20px 20px lightgray;
 }
+
+#content {
+    width: 50%;
+}
+
+#enhancements img {
+    width: 50%;
+    display: block;
+}
+
 details {
-    padding:1%;
-    }
+    padding: 1%;
+}
+
 details summary {
-font:bold 20px Japanese;
+    font: bold 20px Japanese;
 }

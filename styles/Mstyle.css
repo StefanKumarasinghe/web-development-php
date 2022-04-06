@@ -1,12 +1,9 @@
 /*
-name: style.css
+name: Mstyle.css
 author: Developer team
 
-Used to style pages for assignment
+Used for responsive design for mobile devices
 */
-
-
-/*This part should be included in the enhancement.css*/
 
 @keyframes background-design {
     0% {
@@ -23,9 +20,6 @@ Used to style pages for assignment
     }
 }
 
-
-
-
 .range-input {
     width: 100%;
     height: 5px;
@@ -39,9 +33,6 @@ Used to style pages for assignment
 .range-input:hover {
     opacity: 1;
 }
-
-
-/*This part should be included in the enhancement.css*/
 
 input[type="range"] {
     vertical-align: middle;
@@ -62,7 +53,6 @@ input[type="range"] {
 }
 
 body {
-   
     font-family: Japanese;
     background-color: white;
     margin: 0px;
@@ -94,7 +84,6 @@ nav a {
     text-decoration: none;
     color: black;
     padding: 3%;
-    
     font-size: 15px;
 }
 
@@ -112,30 +101,29 @@ header {
     padding: 3em;
     vertical-align: middle;
     background-color: yellow;
-text-align:center;
+    text-align: center;
     color: black;
     column-gap: 100px;
     grid-template-columns: 30% auto;
 }
 
 aside {
-    width:50%;
+    width: 50%;
     margin: 5% auto;
-    clear:both;
-    border-radius:30px;
+    clear: both;
+    border-radius: 30px;
     display: block;
 }
 
 #logo-box {
     float: right;
-    display:none;
-  
+    display: none;
 }
 
 #logo {
     width: 30%;
     margin-top: 8%;
-    display:none;
+    display: none;
     float: right;
 }
 
@@ -143,7 +131,7 @@ main {
     min-height: 100vh;
     width: auto;
     margin: 3% 5%;
-    text-align:center;
+    text-align: center;
     box-sizing: border-box;
 }
 
@@ -160,7 +148,7 @@ main {
 }
 
 h1 {
-    font: 50px bold Japanese;
+    font: bold 50px Japanese;
 }
 
 p {
@@ -173,9 +161,8 @@ figure {
 
 main img {
     max-width: 100%;
-border:1px solid black;
+    border: 1px solid black;
     display: block;
-
     border-radius: 5px;
 }
 
@@ -193,7 +180,7 @@ main figcaption {
 
 main h1 {
     margin-top: 0px;
-    font-family:Japanese;
+    font-family: Japanese;
 }
 
 .w-50 {
@@ -213,13 +200,12 @@ main h1 {
 .flex-container-nowrap {
     display: flex !important;
     flex-wrap: wrap;
- 
     justify-content: space-around;
 }
 
 .flex-footer {
     display: flex;
-    text-align:center;
+    text-align: center;
     flex-wrap: wrap;
     justify-content: space-evenly;
     text-align: center;
@@ -241,7 +227,6 @@ footer {
     margin: 0px;
     background-color: white;
     background-color: black;
-   
 }
 
 footer h4 {
@@ -289,7 +274,7 @@ footer p {
 input[type="text"] {
     padding: 3%;
     font-size: 15px;
-    font-weight:bold;
+    font-weight: bold;
     width: 70%;
     margin-top: 1%;
     border-radius: 10px;
@@ -308,8 +293,7 @@ input[type="checkbox"] {
 [type="submit"] {
     background-color: yellow;
     padding: 3%;
-    font:bold 15px Japanese;
-    
+    font: bold 15px Japanese;
     margin-top: 2%;
     border: none;
     width: 25%;
@@ -320,8 +304,7 @@ input[type="checkbox"] {
     background-color: black;
     padding: 3%;
     color: white;
-    font:bold 15px Japanese;
-    
+    font: bold 15px Japanese;
     margin-top: 2%;
     border: none;
     width: 25%;
@@ -339,16 +322,13 @@ fieldset {
 
 textarea {
     width: 100%;
-    font-weight:bold 15px Japanese;
-    text-align:center;
-
-   
+    font: bold 15px Japanese;
+    text-align: center;
     display: block;
     border-radius: 10px;
     padding: 1%;
-    margin:1%;
-    box-sizing:border-box;
-    
+    margin: 1%;
+    box-sizing: border-box;
     resize: none;
 }
 
@@ -359,22 +339,26 @@ main h2 {
 
 ul li {
     font-size: 15px;
-    text-align:left;
+    text-align: left;
 }
 
 ol li {
     font-size: 15px;
-    list-style-type:lower-alpha;
-    text-align:justify;
-    
+    list-style-type: lower-alpha;
+    text-align: justify;
 }
-ol {
 
-    list-style-position:inside; 
+ol {
+    list-style-position: inside;
 }
+
 
 /* Table Section */
-table {border-collapse: collapse; width:100%; }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
 table td,
 table th {
@@ -400,39 +384,40 @@ td {
 }
 
 .topicImg {
-   width:100%;
+    width: 100%;
 }
-
 
 #topicAside {
-
     border: 4px solid black;
-  
-    padding:3em;
+    padding: 3em;
     box-shadow: 20px 20px 1px lightgray;
 }
+
 .learn-more {
-    padding:2em;
-    font-weight:bold;
-    color:white;
-    background-color:black;
-    text-decoration:none;
-   
+    padding: 2em;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    text-decoration: none;
 }
+
 #topic-page img {
-  box-shadow:20px 20px lightgray;  
+    box-shadow: 20px 20px lightgray;
 }
+
 #content {
-    width:100%;
+    width: 100%;
 }
-#enchancements img {
-    width:90%;
-    margin:auto;
-    display:block;
+
+#enhancements img {
+    width: 90%;
+    display: block;
 }
+
 details {
-    padding:1%;
-    }
+    padding: 1%;
+}
+
 details summary {
-font:bold 20px Japanese;
+    font: bold 20px Japanese;
 }
