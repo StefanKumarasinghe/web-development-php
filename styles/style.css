@@ -4,6 +4,7 @@ name: style.css
 author: Developer team
 Used to style pages for assignment
 Please note : None of the contents were refered from the internet, however we would like to say that the knowledge and our reasearch was received from W3school.com 
+Also there is no order in the tags as it follows time order and we have also included enhancements to this page such as flex, keyframes and grids
 */
 
 /*This is a keyframe which is used to define the steps of an animation. So at first the background-color is red then it slowly shifts color until it reaches the color red again to create the illusion of a endless loop */
@@ -126,7 +127,7 @@ nav a:active {
 }
 /* We can also add a :vistied one but it looks ugly for the nav links */
 
-/*This is the header section on every webpage */
+/*This is the header section on every webpage. A grid is used to define a table like structure for your box so that means the box is divided to rows and columns like a grid and you can define the size of each column and row so it looks amazing! */
 
 header {
     padding: 3em;
