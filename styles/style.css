@@ -1,10 +1,12 @@
 /*
+
 name: style.css
 author: Developer team
-
 Used to style pages for assignment
+Please note : None of the contents were refered from the internet, however we would like to say that the knowledge and our reasearch was received from W3school.com 
 */
 
+/*This is a keyframe which is used to define the steps of an animation. So at first the background-color is red then it slowly shifts color until it reaches the color red again to create the illusion of a endless loop */
 @keyframes background-design {
     0% {
         background-color: red;
@@ -19,6 +21,7 @@ Used to style pages for assignment
         background-color: red;
     }
 }
+/*This is another keyframe called shadow which is used to change the border color ONLY*/
 
 @keyframes shadow {
     0% {
@@ -37,7 +40,7 @@ Used to style pages for assignment
         border: 3px solid blue;
     }
 }
-
+/* Used to style the range input for the ones in the quiz page which asks to rate and recommend. The linear gradient is used to create a gradient effect background-color so the color changes from LEFT to RIGHT from  #dddbae (light yellow) to yellow */
 .range-input {
     width: 100%;
     height: 5px;
@@ -47,23 +50,24 @@ Used to style pages for assignment
     opacity: 0.7;
     transition: opacity .2s;
 }
-
+/* when you hover over this it gets more visible to show that the input range tag is focused */
 .range-input:hover {
     opacity: 1;
 }
 
+/*Defines all input tags with the attribute type="range" */
 input[type="range"] {
     vertical-align: middle;
     width: 50%;
 }
-
+/* Used to style the label for the input range tag that is reponsible for rating the quiz */
 .label-rating {
     font-weight: bold;
     padding: 5px;
 }
 
 
-/* Used to add a user preferred font-family from google */
+/* Used to add a user preferred font-family from google. This font is called Japanese and has a file extenstion of .otf. It looks more sexier */
 
 @font-face {
     font-family: Japanese;
@@ -75,16 +79,21 @@ body {
     background-color: white;
     margin: 0px;
     font-weight: bold;
+    /*This overflow is not neccessary but is used to prevent scrolling in the x direction */
+    overflow-x:hidden;
 }
 
+/* To highlight the current page on the nav links. This shows the user... Ahh yes, I am currently in the Quiz page! */
 nav .active-nav {
     color: red;
 }
 
+/* This is used to design the header title "DEVELOPERS" in every webpage and since it can not be a h1 tag, we must use a normal inline tag and design it like a heading */
 .header-title {
     font-size: 60px;
 }
 
+/* The navigation bar on the top. Notice we have used postion:fixed this means the position of the bar does not change when we scroll down   */
 nav {
     padding: 0px;
     margin: 0px;
@@ -105,16 +114,19 @@ nav a {
     padding: 2%;
     font-size: 15px;
 }
-
+/* This is an example of a psuedo element and is activated once a particular event occurs. In this case when the mouse hovers the links in the navigation */
 nav a:hover {
     color: #aaaa00;
     transition: color 0.3s;
 }
-
+/* A psudeoclass activated when the mouse is clicking on the link. This is only when you hold the mouse on the link */
 nav a:active {
-    color: red;
+    color: black;
     transition: color 0.3s;
 }
+/* We can also add a :vistied one but it looks ugly for the nav links */
+
+/*This is the header section on every webpage */
 
 header {
     padding: 3em;
@@ -133,17 +145,19 @@ aside {
     display: block;
 }
 
+/* This is an ID selector and this refers the the content in the Header which holds the logo image */
 #logo-box {
     float: right;
     width: 100%;
 }
-
+ /* This is the logo image inside every header */
 #logo {
     width: 30%;
     margin-top: 8%;
     float: right;
 }
 
+/* vh is another measuring unit which is similar to % but the difference is that vh is in comparison to the screen dimensions where as % is relative to the parent element dimensions */
 main {
     min-height: 100vh;
     width: auto;
@@ -151,6 +165,13 @@ main {
     box-sizing: border-box;
 }
 
+/* Example of implementing the animation rule. Note that this is the short hand rule for animation and animation is divided into animation-duration, animation-direction and animation-iteration-count, animation-timing-function and animation-name
+animation-name must match the keyframes
+animation-duration is the length of the animation
+animation-timing-function is almost like the speed of the animation ( in this case it is linear / constant )
+animation-iteration-count means the number of times the keyframes should repeat
+animation-fill-mode: Whether the animation must end with the last property defined on the keyframes
+*/
 .quicklinks {
     margin-top: 0%;
     padding: 3%;
@@ -181,7 +202,7 @@ main img {
     display: block;
     border-radius: 5px;
 }
-
+/* Reduces the visibility slightly when hovered */
 main img:hover {
     opacity: 0.6;
     transition: opacity 0.3s;
@@ -199,6 +220,7 @@ main h1 {
     font-family: Japanese;
 }
 
+/* These are classes just to define the widths however since we need to make it responsive it doesn't follow the same convention in the MOBILE stylesheet. i agree this is kind of bad practice but it doesn't make the code wrong and it's just the naming conventions at fault */
 .w-40 {
     width: 40%;
 }
@@ -211,11 +233,13 @@ main h1 {
     width: 75%;
 }
 
+/* This is a flex container. So basically a flex container arranges   block elements in a row, if no more block elements can't be added to that line it will be put into the next line. So what it does is it makes sure the contents are evenly spread in a row */
 .flex-container {
     display: flex !important;
     flex-wrap: wrap;
     justify-content: space-around;
 }
+/* Similar to the first one but this is nowrap which means everything is squeezed into one line evenly and not put into the next line when overflowed*/
 
 .flex-container-nowrap {
     display: flex !important;
@@ -234,6 +258,8 @@ main h1 {
     margin: 1%;
     width: 33%;
 }
+
+/* This is the block item in the flex container */
 
 .flex-container .item {
     margin: 1%;
@@ -291,6 +317,7 @@ footer p {
     font-style: italic;
 }
 
+/* Below are attribute selectors */
 input[type="text"] {
     padding: 3%;
     font-size: 15px;
@@ -387,12 +414,15 @@ td {
     float: right;
 }
 
+/* This is used to display the backgrond-image for the index page */
 #indexbackground {
     background-image: url("images/bg.png");
+    
     margin: 0;
     padding: 2% 5% 2% 5%;
 }
 
+/* Design the images in the topic page */
 .topicImg {
     width: 600px;
     height: 300px;
@@ -401,7 +431,7 @@ td {
 flex-container w-75 {
     display: flex;
 }
-
+/* Used to style the aside section in the topic page */
 #topicAside {
     animation: shadow 10s linear infinite;
     padding: 3em;
@@ -409,6 +439,7 @@ flex-container w-75 {
     box-shadow: 15px 15px 1px #aaaaaa;
 }
 
+/* Learn more button in the index page which directs to the topic page */
 .learn-more {
     padding: 1%;
     font-weight: bold;
@@ -417,19 +448,21 @@ flex-container w-75 {
     text-decoration: none;
 }
 
+/* Again used to design images in the topic page. This has an additional style */
 #topic-page img {
     box-shadow: 20px 20px lightgray;
 }
-
+/* The content section in the topic page which is separate from the aside section */
 #content {
     width: 50%;
 }
-
+/* The images in the enhancement page are styled*/
 #enhancements img {
     width: 50%;
     display: block;
 }
 
+/* A details tag is used to create a simple dropdown effect */
 details {
     padding: 1%;
 }
