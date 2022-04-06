@@ -22,6 +22,24 @@ Used to style pages for assignment
         background-color: red;
     }
 }
+@keyframes shadow {
+    0% {
+        border:3px solid blue;
+    }
+    5% {
+        border:3px solid green;
+    }
+    40% {
+        border:3px solid yellow;
+    }
+
+    70% {
+        border:3px solid black;
+    }
+    100% {
+        border:3px solid blue;
+    }
+}
 
 
 
@@ -62,7 +80,6 @@ input[type="range"] {
 }
 
 body {
-   
     font-family: Japanese;
     background-color: white;
     margin: 0px;
@@ -74,11 +91,11 @@ nav .active-nav {
 }
 
 .header-title {
-    font-size: 2em;
+    font-size: 60px;
 }
 
 nav {
-    padding: 10px;
+    padding: 0px;
     margin: 0px;
     background-color: rgb(220, 220, 220);
     box-shadow: 0 0 10px rgb(84, 84, 84);
@@ -87,19 +104,19 @@ nav {
     top: 0px;
     z-index: 5;
     left: 0px;
-    width: 100vw;
+    width: 100%;
 }
 
 nav a {
+    float: left;
     text-decoration: none;
     color: black;
-    padding: 3%;
-    
+    padding: 2%;
     font-size: 15px;
 }
 
 nav a:hover {
-    color: #eeee00;
+    color: #aaaa00;
     transition: color 0.3s;
 }
 
@@ -112,30 +129,28 @@ header {
     padding: 3em;
     vertical-align: middle;
     background-color: yellow;
-text-align:center;
+    display: grid;
     color: black;
     column-gap: 100px;
     grid-template-columns: 30% auto;
 }
 
 aside {
-    width:50%;
+    width: 30%;
     margin: 5% auto;
-    clear:both;
-    border-radius:30px;
+    float: right;
     display: block;
+
 }
 
 #logo-box {
     float: right;
-    display:none;
-  
+    width: 100%;
 }
 
 #logo {
     width: 30%;
     margin-top: 8%;
-    display:none;
     float: right;
 }
 
@@ -143,7 +158,6 @@ main {
     min-height: 100vh;
     width: auto;
     margin: 3% 5%;
-    text-align:center;
     box-sizing: border-box;
 }
 
@@ -155,7 +169,7 @@ main {
 }
 
 .quicklinks h2 {
-    font-size: 2em;
+    font-size: 50px;
     font-weight: bold;
 }
 
@@ -196,12 +210,16 @@ main h1 {
     font-family:Japanese;
 }
 
+.w-40 {
+    width: 40%;
+}
+
 .w-50 {
-    width: 100%;
+    width: 50%;
 }
 
 .w-75 {
-    width: 100%;
+    width: 75%;
 }
 
 .flex-container {
@@ -212,22 +230,20 @@ main h1 {
 
 .flex-container-nowrap {
     display: flex !important;
-    flex-wrap: wrap;
- 
+    flex-wrap: nowrap;
     justify-content: space-around;
 }
 
 .flex-footer {
     display: flex;
-    text-align:center;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    justify-content: left;
     text-align: center;
 }
 
 .flex-footer div {
     margin: 1%;
-    width: 100%;
+    width: 33%;
 }
 
 .flex-container .item {
@@ -241,7 +257,7 @@ footer {
     margin: 0px;
     background-color: white;
     background-color: black;
-   
+    font-style: italic;
 }
 
 footer h4 {
@@ -289,7 +305,6 @@ footer p {
 input[type="text"] {
     padding: 3%;
     font-size: 15px;
-    font-weight:bold;
     width: 70%;
     margin-top: 1%;
     border-radius: 10px;
@@ -308,8 +323,7 @@ input[type="checkbox"] {
 [type="submit"] {
     background-color: yellow;
     padding: 3%;
-    font:bold 15px Japanese;
-    
+    font-size: 15px;
     margin-top: 2%;
     border: none;
     width: 25%;
@@ -320,8 +334,7 @@ input[type="checkbox"] {
     background-color: black;
     padding: 3%;
     color: white;
-    font:bold 15px Japanese;
-    
+    font-size: 15px;
     margin-top: 2%;
     border: none;
     width: 25%;
@@ -338,17 +351,12 @@ fieldset {
 }
 
 textarea {
-    width: 100%;
-    font-weight:bold 15px Japanese;
-    text-align:center;
-
-   
+    width: 80%;
+    max-width: 100%;
+    font-size: 15px;
     display: block;
     border-radius: 10px;
     padding: 1%;
-    margin:1%;
-    box-sizing:border-box;
-    
     resize: none;
 }
 
@@ -359,22 +367,10 @@ main h2 {
 
 ul li {
     font-size: 15px;
-    text-align:left;
-}
-
-ol li {
-    font-size: 15px;
-    list-style-type:lower-alpha;
-    text-align:justify;
-    
-}
-ol {
-
-    list-style-position:inside; 
 }
 
 /* Table Section */
-table {border-collapse: collapse; width:100%; }
+table {border-collapse: collapse; width:75%; }
 
 table td,
 table th {
@@ -393,6 +389,13 @@ td {
     background-color: rgb(240, 240, 255);
 }
 
+
+
+
+.float-right {
+    float: right;
+}
+
 #indexbackground {
     background-image: url("images/bg.png");
     margin: 0;
@@ -400,19 +403,24 @@ td {
 }
 
 .topicImg {
-   width:100%;
+    width: 600px;
+    height: 300px;
 }
 
+flex-container w-75 {
+    display: flex;
+}
 
 #topicAside {
 
-    border: 4px solid black;
-  
+
+   animation:shadow 10s linear infinite; 
     padding:3em;
-    box-shadow: 20px 20px 1px lightgray;
+    border-radius:30px;
+    box-shadow: 15px 15px 1px #aaaaaa;
 }
 .learn-more {
-    padding:2em;
+    padding:1%;
     font-weight:bold;
     color:white;
     background-color:black;
@@ -420,13 +428,15 @@ td {
    
 }
 #topic-page img {
-  box-shadow:20px 20px lightgray;  
+  box-shadow:20px 20px lightgray; 
+ 
 }
 #content {
-    width:100%;
+    width:50%;
 }
+
 #enchancements img {
-    width:90%;
+    width:50%;
     margin:auto;
     display:block;
 }
