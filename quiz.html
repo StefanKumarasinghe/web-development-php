@@ -11,7 +11,9 @@
         <title>Quiz</title>
     </head>
     <body>
+		<!-- Header section, includes nav bar and the yellow background header -->
         <header>
+			<!-- Nav bar at top of all pages -->
             <nav>
                 <a href="index.html">
                 Home
@@ -26,6 +28,7 @@
                 Enhancements
                 </a>
             </nav>
+			<!-- Yellow background header with team members and logo -->
             <div>
                 <p class="header-title">Developers</p>
                 <p>Created by Peter, Leon, John, Stefan and Arka</p>
@@ -34,14 +37,16 @@
                 <img src="images/logo1.png" id="logo" alt="Site logo">
             </aside>
         </header>
+		<!-- Main content of page -->
         <main>
-            
             <h1>Quiz Time!</h1>
             <p>How long were you paying attention for?</p>
+			<!-- Quiz section -->
             <form method="POST" action="https://mercury.swin.edu.au/it000000/formtest.php">
                 <div class="flex-container-nowrap">
                     <div class="w-75">
                         <div class="w-75">
+							<!-- Authentication section -->
                             <fieldset>
                                 <legend>Authentication</legend>
                                 <p>Please enter your personal details for submission</p>
@@ -52,12 +57,14 @@
                                 <label class="inline-label" for="lastname">Last Name</label>  
                                 <input type="text" id="lastname" placeholder="Please enter your last name" name="lastname" pattern="^[A-Z\- a-z]+$" maxlength="30" minlength="1" required><br>
                             </fieldset>
+							<!-- Recap questions -->
                             <h2>Recap</h2>
                             <fieldset>
                                 <legend>Text Based Questions</legend>
                                 <label class="block-label questions" for="advantages1">Explain the advantages of Web 3.0 over Web 2.0</label>
                                 <textarea rows="10" class="block" id="advantages1" placeholder="Please type the answer to question here..." name="Question1"></textarea>
                             </fieldset>
+							<!-- MCQ section -->
                             <fieldset>
                                 <legend>MCQs for you</legend>
                                 <p class="questions">When was Web 2.0 introduced?</p>
@@ -89,11 +96,13 @@
                         </div>
                     </div>
                     <div class="w-75">
+						<!-- Advanced questions part 1 -->
                         <fieldset>
                             <legend>Advance Questions Part 1</legend>
                             <label class="block-label questions" for="Question1">What are the main differences between Web 1.0 and Web 2.0?</label>
                             <textarea rows="10" class="block" id="Question1" placeholder="Please type the answer to question here..." name="Question1"></textarea>
                         </fieldset>
+						<!-- Advanced questions part 2 -->
                         <fieldset>
                             <legend>Advance Question 2</legend>
                             <p class="questions">When was Web 3.0 introduced?</p>
@@ -115,6 +124,7 @@
                             <input type="checkbox" id="checkbox4_2" name="characteristics2[]" value="Responsive design">
 							<label for="checkbox4_2" class="inline-label">Responsive design</label><br>
                         </fieldset>
+						<!-- Unit satisfaction questions -->
                         <fieldset>
                             <legend>Satisfactory test</legend>
                             <p>How confident are you in this unit</p>
@@ -128,17 +138,20 @@
                         </fieldset>
                         <br>
                         <input type="submit" class="submit-btn" value="Submit">
-						<input type="reset" class="submit-btn" value="Reset" >
+						<input type="reset" class="submit-btn" value="Reset">
                     </div>
                 </div>
             </form>
         </main>
+		<!-- Color changing footer showing team name and members -->
         <section class="quicklinks">
             <h2>Developers</h2>
             <p>Created by Peter, Leon, John, Stefan and Arka</p>
         </section>
+		<!-- Bottom footer with links -->
         <footer>
             <div class="flex-footer">
+				<!-- Contact details -->
                 <div>
                     <h4>Contact any of us</h4>
                     <a href="mailto:103804645@student.swin.edu.au">Stefan Ralph</a>
@@ -147,6 +160,7 @@
                     <a href="mailto:103403903@student.swin.edu.au">John</a>
                     <a href="mailto:103804645@student.swin.edu.au">Arka</a>
                 </div>
+				<!-- Sitemap -->
                 <div>
                     <h4>Sitemap</h4>
                     <a href="index.html">Home</a>
@@ -154,6 +168,7 @@
                     <a href="quiz.html">Quiz</a>
                     <a href="enhancements.html">Enhancements</a>
                 </div>
+				<!-- Social media links -->
                 <div>
                     <h4>Social Media</h4>
                     <a href="https://facebook.com">Facebook</a>
@@ -162,6 +177,7 @@
                     <a href="https://discord.com">Discord</a>
                 </div>
             </div>
+			<!-- Copyright notice -->
             <div>
                 <p>All rights reserved to Developers &copy; 2022-2023</p>
             </div>
