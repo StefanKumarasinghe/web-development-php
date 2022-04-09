@@ -4,7 +4,8 @@ author: Developer team
 
 Used for responsive design for mobile devices
 */
-
+/* Mostly everything is centered and simple. Note we have not used any frameworks or codes from other sites! All of the codes here are 100% original */
+/* Same explaination as the one in desktop stylesheet */
 @keyframes background-design {
     0% {
         background-color: red;
@@ -78,6 +79,7 @@ nav {
     z-index: 5;
     left: 0px;
     width: 100vw;
+    
 }
 
 nav a {
@@ -182,11 +184,11 @@ main h1 {
     margin-top: 0px;
     font-family: Japanese;
 }
-
+/* we have to adjust this to 100% since 50% is relative and so will be ugly on a small screen and must be fully wide */
 .w-50 {
     width: 100%;
 }
-
+/* we have to adjust this to 100% since 75% is relative and so will be ugly on a small screen and must be fully wide */
 .w-75 {
     width: 100%;
 }
@@ -196,13 +198,13 @@ main h1 {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
+/* Note we have changed the flex-wrap to wrap even though it is called no-wrap, when designing to make the webpage responsive and fluid, we need to make this to wrap or else all the elements will squeeze into one line, this allows the contents to go to the next line when NEEDED only */
 .flex-container-nowrap {
     display: flex !important;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
+/* This is also changed to wrap since it will be ugly to fit all the contents in one line in a small screen */
 .flex-footer {
     display: flex;
     text-align: center;
@@ -359,7 +361,7 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
-
+/* Example of a group selector */
 table td,
 table th {
     padding: 1%;
