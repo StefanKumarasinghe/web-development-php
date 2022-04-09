@@ -471,3 +471,15 @@ details {
 details summary {
     font: bold 20px Japanese;
 }
+/* Reference button in enhancements page */
+.reference {
+    padding:1em;
+    font-weight:bold;
+    color:white;
+    background-color:green;
+    width:30vw;
+    display:block;
+    text-align:center;
+    text-decoration:none;
+   
+}
