@@ -12,31 +12,7 @@
     </head>
     <body>
 		<!-- Header section, includes nav bar and the yellow background header -->
-        <header>
-			<!-- Nav bar at top of all pages -->
-            <nav>
-                <a href="index.html">
-                Home
-                </a>
-                <a href="topic.html">
-                Topic
-                </a>
-                <a href="quiz.html">
-                Quiz
-                </a>
-                <a href="enhancements.html" class="active-nav">
-                Enhancements
-                </a>
-            </nav>
-			<!-- Yellow background header with team members and logo -->
-            <div>
-                <p class="header-title">Developers</p>
-                <p>Created by Peter, Leon, John, Stefan and Arka</p>
-            </div>
-            <aside id="logo-box">
-                <img src="images/logo1.png" id="logo" alt="Site logo">
-            </aside>
-        </header>
+		<?php require("header.inc"); ?>
 		<!-- Main content of page -->
         <main id="enhancements">
 			<!-- Introduction to enhancements -->
