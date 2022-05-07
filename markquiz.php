@@ -103,7 +103,7 @@ if ($q4_answer == "2006") {
 }
 if (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"])) {
     $q5 = 25;
-} elseif (isset($_POST["characteristics2_c3"]) or isset($_POST["characteristics2_c3"])) {
+} elseif (isset($_POST["characteristics2_c2"]) or isset($_POST["characteristics2_c3"])) {
     $q5 = 15;
 } else {
     $q5 = 0;
