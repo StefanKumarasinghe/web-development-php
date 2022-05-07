@@ -18,7 +18,8 @@
             <h1>Quiz Time!</h1>
             <p>How long were you paying attention for?</p>
 			<!-- Quiz section -->
-            <form method="POST" action="https://mercury.swin.edu.au/it000000/formtest.php">
+<!--        <form method="POST" action="https://mercury.swin.edu.au/it000000/formtest.php"> -->
+            <form method="POST" action="markquiz.php" novalidate="novalidate" id="regform">
                 <div class="flex-container-nowrap">
                     <div class="w-75">
                         <div class="w-75">
@@ -53,20 +54,20 @@
                                 <input type="radio" value="2006" id="creation4" name="web3Creation">
 								<label class="inline-label" for="creation4">2006</label>
                                 <p class="questions">What are characteristics of Web 2.0? Tick everything that applies</p>
-                                <input type="checkbox" id="checkbox1" name="characteristics[]" value="Rich user experience">
+                                <input type="checkbox" id="checkbox1" name="characteristics" value="Rich user experience">
 								<label for="checkbox1" class="inline-label">Rich user experience</label><br>
-                                <input type="checkbox" id="checkbox2" name="characteristics[]" value="User participation">
+                                <input type="checkbox" id="checkbox2" name="characteristics_c2" value="User participation">
 								<label for="checkbox2" class="inline-label">User participation</label><br>
-                                <input type="checkbox" id="checkbox3" name="characteristics[]" value="Read and write">
+                                <input type="checkbox" id="checkbox3" name="characteristics_c3" value="Read and write">
 								<label for="checkbox3" class="inline-label">Read and write</label><br>
-                                <input type="checkbox" id="checkbox4" name="characteristics[]" value="Read only">
+                                <input type="checkbox" id="checkbox4" name="characteristics" value="Read only">
 								<label for="checkbox4" class="inline-label">Read only</label><br>
                                 <p class="questions" >Which from the below list is considered...</p>
                                 <select name="dropdown" required>
                                     <option value="">Please select an option</option>
                                     <option value="">User accessibility</option>
                                     <option value="">Bandwidth requirements</option>
-                                    <option value="">Ability to edit</option>
+                                    <option value="dropdown_correct">Ability to edit</option>
                                 </select>
                             </fieldset>
                         </div>
@@ -91,13 +92,13 @@
                             <input type="radio" value="2006" id="creation4_2" name="web3Creation2">
 							<label class="inline-label" for="creation4_2">2006</label>
                             <p class="questions">What are functions of Web 3.0? Tick everything that applies</p>
-                            <input type="checkbox" id="checkbox1_2" name="characteristics2[]" value="Connectivity">
+                            <input type="checkbox" id="checkbox1_2" name="characteristics2" value="Connectivity">
 							<label for="checkbox1_2" class="inline-label">Connectivity</label><br>
-                            <input type="checkbox" id="checkbox2_2" name="characteristics2[]" value="3D Graphics">
+                            <input type="checkbox" id="checkbox2_2" name="characteristics2_c2" value="3D Graphics">
 							<label for="checkbox2_2" class="inline-label">3D Graphics</label><br>
-                            <input type="checkbox" id="checkbox3_2" name="characteristics2[]" value="Privacy">
+                            <input type="checkbox" id="checkbox3_2" name="characteristics2_c3" value="Privacy">
 							<label for="checkbox3_2" class="inline-label">Privacy</label><br>
-                            <input type="checkbox" id="checkbox4_2" name="characteristics2[]" value="Responsive design">
+                            <input type="checkbox" id="checkbox4_2" name="characteristics2" value="Responsive design">
 							<label for="checkbox4_2" class="inline-label">Responsive design</label><br>
                         </fieldset>
 						<!-- Unit satisfaction questions -->
