@@ -13,6 +13,7 @@
 	<h1>Quiz Marking</h1>
 
 <?php
+include("settings.php");
 function sanitise_input($data) // Santise Function
 {
     $data = trim($data);
@@ -111,17 +112,47 @@ if (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"])
 // *****************************************************
 // ******* Result Display **********************************************
 // *****************************************************
-$OverallScore = $q1 + $q2 + $q3 + $q4 + $q5;
+$overallScore = $q1 + $q2 + $q3 + $q4 + $q5;
 
 if ($errMsg != "") {
     echo "<p>$errMsg</p>";
-} else {
-    echo "<p>StudentID: $studentID <br/>
-		First Name: $firstname <br/>
-		Last Name: $lastname <br/>
-		Overall Score: $OverallScore% <br/>
-		Attempts: <br/>
-		<p><a href=\"quiz.php\">Try Again?</a></p></p>";
+	return;
 }
+echo "<p>Student ID: $studentID<br>
+	First Name: $firstname<br>
+	Last Name: $lastname<br>
+	Overall Score: $overallScore%<br>
+	Attempts:<br>
+	<p><a href=\"quiz.php\">Try Again?</a></p></p>";
+
+$db = new mysqli($dbHost, $dbUser, $dbPass, $dbDb);
+$db->query("CREATE TABLE IF NOT EXISTS students (studentId VARCHAR(32), firstName VARCHAR(32), lastName VARCHAR(32), PRIMARY KEY (studentId));");
+$db->query("CREATE TABLE IF NOT EXISTS attempts (attemptId INT NOT NULL AUTO_INCREMENT, studentId VARCHAR(32), attemptTime DATETIME, attemptNum INT, score INT, PRIMARY KEY (attemptId), FOREIGN KEY (studentId) REFERENCES students(studentId));");
+
+$stmt1 = $db->prepare("SELECT studentId FROM students WHERE studentId=?");
+$stmt1->bind_param("s", $studentID);
+$stmt1->execute();
+$result1 = $stmt1->get_result();
+if($result1->num_rows == 0){
+	$stmt2 = $db->prepare("INSERT INTO students (studentId, firstName, lastName) VALUES (?, ?, ?)");
+	$stmt2->bind_param("sss", $studentID, $firstname, $lastname);
+	$stmt2->execute();
+}
+$stmt3 = $db->prepare("SELECT COUNT(*) FROM attempts WHERE studentId=?");
+$stmt3->bind_param("s", $studentID);
+$stmt3->execute();
+$attempts = $stmt3->get_result()->fetch_row()[0];
+if($attempts == 2){
+	echo("You have already submitted 2 attempts.");
+	return;
+}
+
+$stmt4 = $db->prepare("INSERT INTO attempts (studentId, attemptTime, attemptNum, score) VALUES (?, ?, ?, ?)");
+$date = date("Y-m-d H:i:s");
+$stmt4->bind_param("ssii", $studentID, $date, $attempts, $overallScore);
+$stmt4->execute();
+
+mysqli_close($db);
+
 ?>
 </body>
