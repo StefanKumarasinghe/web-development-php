@@ -6,16 +6,21 @@
 	<meta name="keywords" content="HTML" />
 	<meta name="author" content="Peter Luong" />
 	<title>Mark Quiz</title>
+    <link rel="stylesheet" href="styles/style.css"  media="screen and (min-width:999px)">
 </head>
 </html>
 
-<body>
-	<h1>Quiz Marking</h1>
+<header>
+<h1>Quiz Marking</h1>
+</header>
 
+<body>
+	
 <?php
-include("settings.php");
-function sanitise_input($data) // Santise Function
+include "settings.php";
+function sanitise_input($data)
 {
+    // Santise Function
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -52,19 +57,33 @@ $studentID = sanitise_input($studentID);
 $firstname = sanitise_input($firstname);
 $lastname = sanitise_input($lastname);
 
+$error = false;
 $errMsg = "";
 if (is_numeric($studentID) == false) {
     $errMsg .= "<p>Your Student ID must be a number.</p>";
+    $error = true;
+}
+if (!preg_match("/\d{7,10}/", $studentID)) {
+    $errMsg .= "<p>Digits must be between 7-10.</p>";
+    $error = true;
 }
 if ($firstname == "") {
     $errMsg .= "<p>You must enter your first name.</p>";
+    $error = true;
 } elseif (!preg_match("/^[a-z-A-Z]*$/", $firstname)) {
     $errMsg .= "<p>Only alpha letters & hypen allowed in your first name.</p>";
+    $error = true;
 }
 if ($lastname == "") {
     $errMsg .= "<p>You must enter your last name.</p>";
 } elseif (!preg_match("/^[a-z-A-Z]*$/", $lastname)) {
+    $error = true;
     $errMsg .= "<p>Only alpha letters & hypen allowed in your last name.</p>";
+    $error = true;
+}
+if ($error == true) {
+    $errMsg .= "<p><a href=\"quiz.php\">Try Again</a></p></p>";
+    $error = false;
 }
 // *****************************************************
 // ******* Quiz Scoring Function **********************************************
@@ -113,39 +132,59 @@ if (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"])
 // ******* Result Display **********************************************
 // *****************************************************
 $overallScore = $q1 + $q2 + $q3 + $q4 + $q5;
+$passorfailed = "";
+if ($overallScore <= 50) {
+    $passorfailed = "FAILED";
+} else {
+    $passorfailed = "PASSED";
+}
 
 if ($errMsg != "") {
     echo "<p>$errMsg</p>";
-	return;
+    return;
 }
-echo "<p>Student ID: $studentID<br>
-	First Name: $firstname<br>
-	Last Name: $lastname<br>
-	Overall Score: $overallScore%<br>
-	Attempts:<br>
-	<p><a href=\"quiz.php\">Try Again?</a></p></p>";
+if ($errMsg != "") {
+    echo "<p>$errMsg</p>";
+    return;
+}
 
 $db = new mysqli($dbHost, $dbUser, $dbPass, $dbDb);
 $db->query("CREATE TABLE IF NOT EXISTS students (studentId VARCHAR(32), firstName VARCHAR(32), lastName VARCHAR(32), PRIMARY KEY (studentId));");
-$db->query("CREATE TABLE IF NOT EXISTS attempts (attemptId INT NOT NULL AUTO_INCREMENT, studentId VARCHAR(32), attemptTime DATETIME, attemptNum INT, score INT, PRIMARY KEY (attemptId), FOREIGN KEY (studentId) REFERENCES students(studentId));");
+$db->query(
+    "CREATE TABLE IF NOT EXISTS attempts (attemptId INT NOT NULL AUTO_INCREMENT, studentId VARCHAR(32), attemptTime DATETIME, attemptNum INT, score INT, PRIMARY KEY (attemptId), FOREIGN KEY (studentId) REFERENCES students(studentId));"
+);
 
 $stmt1 = $db->prepare("SELECT studentId FROM students WHERE studentId=?");
 $stmt1->bind_param("s", $studentID);
 $stmt1->execute();
 $result1 = $stmt1->get_result();
-if($result1->num_rows == 0){
-	$stmt2 = $db->prepare("INSERT INTO students (studentId, firstName, lastName) VALUES (?, ?, ?)");
-	$stmt2->bind_param("sss", $studentID, $firstname, $lastname);
-	$stmt2->execute();
+if ($result1->num_rows == 0) {
+    $stmt2 = $db->prepare("INSERT INTO students (studentId, firstName, lastName) VALUES (?, ?, ?)");
+    $stmt2->bind_param("sss", $studentID, $firstname, $lastname);
+    $stmt2->execute();
 }
 $stmt3 = $db->prepare("SELECT COUNT(*) FROM attempts WHERE studentId=?");
 $stmt3->bind_param("s", $studentID);
 $stmt3->execute();
 $attempts = $stmt3->get_result()->fetch_row()[0];
-if($attempts == 2){
-	echo("You have already submitted 2 attempts.");
-	return;
+if ($attempts == 2) {
+    echo "You have already submitted 2 attempts.";
+    return;
 }
+echo "<h2>Personal Details</h2>";
+
+// echo "<tr>";
+// echo "<td>" .$studentID. "</td>";
+// echo "</tr>";
+
+echo     
+    "<p>Student ID: $studentID<br>
+	First Name: $firstname<br>
+	Last Name: $lastname<br>
+	Overall Score: $overallScore% - $passorfailed <br>
+	Attempts: $attempts<br>";
+
+echo "<p class=\"tryagain\"><a href=\"quiz.php\">Try Again?</a></p>";
 
 $stmt4 = $db->prepare("INSERT INTO attempts (studentId, attemptTime, attemptNum, score) VALUES (?, ?, ?, ?)");
 $date = date("Y-m-d H:i:s");
@@ -153,6 +192,5 @@ $stmt4->bind_param("ssii", $studentID, $date, $attempts, $overallScore);
 $stmt4->execute();
 
 mysqli_close($db);
-
 ?>
 </body>

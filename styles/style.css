@@ -483,3 +483,13 @@ details summary {
     text-decoration:none;
    
 }
+
+.tryagain {
+    background-color: yellow;
+    padding: 3%;
+    font-size: 15px;
+    margin-top: 2%;
+    border: none;
+    width: 25%;
+    text-align: center
+}
