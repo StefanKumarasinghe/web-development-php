@@ -11,10 +11,12 @@
         <title>Quiz</title>
     </head>
     <body>
-		<!-- Header section, includes nav bar and the yellow background header -->
-		<?php require("header.inc"); ?>
+		<!-- Navigation bar -->
+		<?php require("menu.inc"); ?>
+		<!-- Yellow header banner -->
+        <?php require("header.inc"); ?>
 		<!-- Main content of page -->
-        <main  id="quiz-page">
+        <main id="quiz-page">
             <h1>Quiz Time!</h1>
             <p>How long were you paying attention for?</p>
 			<!-- Quiz section -->
@@ -120,44 +122,7 @@
                 </div>
             </form>
         </main>
-		<!-- Color changing footer showing team name and members -->
-        <section class="quicklinks">
-            <h2>Developers</h2>
-            <p>Created by Peter, Leon, John, Stefan and Arka</p>
-        </section>
-		<!-- Bottom footer with links -->
-        <footer>
-            <div class="flex-footer">
-				<!-- Contact details -->
-                <div>
-                    <h4>Contact any of us</h4>
-                    <a href="mailto:103804645@student.swin.edu.au">Stefan Ralph</a>
-                    <a href="mailto:103103232@student.swin.edu.au">Peter </a>
-                    <a href="mailto:103808595@student.swin.edu.au">Leon</a>
-                    <a href="mailto:103403903@student.swin.edu.au">John</a>
-                    <a href="mailto:103804645@student.swin.edu.au">Arka</a>
-                </div>
-				<!-- Sitemap -->
-                <div>
-                    <h4>Sitemap</h4>
-                    <a href="index.html">Home</a>
-                    <a href="topic.html">Topic</a>
-                    <a href="quiz.html">Quiz</a>
-                    <a href="enhancements.html">Enhancements</a>
-                </div>
-				<!-- Social media links -->
-                <div>
-                    <h4>Social Media</h4>
-                    <a href="https://facebook.com">Facebook</a>
-                    <a href="https://instagram.com">Instagram</a>
-                    <a href="https://twitter.com">Twitter</a>
-                    <a href="https://discord.com">Discord</a>
-                </div>
-            </div>
-			<!-- Copyright notice -->
-            <div>
-                <p>All rights reserved to Developers &copy; 2022-2023</p>
-            </div>
-        </footer>
+		<!-- Page footer -->
+		<?php require("footer.inc"); ?>
     </body>
 </html>
