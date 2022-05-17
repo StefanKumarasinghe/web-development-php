@@ -21,7 +21,6 @@
         </header>
 		<main>
 <?php
-include "settings.php";
 
 function sanitise_input($data){
     // Santise Function
@@ -32,6 +31,7 @@ function sanitise_input($data){
 }
 
 function handleForm() {
+	include "settings.php";
     // *****************************************************
     // ******* Personal Details Submission **********************************************
     // *****************************************************
@@ -150,48 +150,55 @@ function handleForm() {
         return;
     }
 
-    $db = new mysqli($dbHost, $dbUser, $dbPass, $dbDb);
-    $db->query("CREATE TABLE IF NOT EXISTS students (studentId VARCHAR(32), firstName VARCHAR(32), lastName VARCHAR(32), PRIMARY KEY (studentId));");
-    $db->query(
-        "CREATE TABLE IF NOT EXISTS attempts (attemptId INT NOT NULL AUTO_INCREMENT, studentId VARCHAR(32), attemptTime DATETIME, attemptNum INT, score INT, PRIMARY KEY (attemptId), FOREIGN KEY (studentId) REFERENCES students(studentId));"
-    );
-
-    $stmt1 = $db->prepare("SELECT studentId FROM students WHERE studentId=?");
-    $stmt1->bind_param("s", $studentID);
-    $stmt1->execute();
-    $result1 = $stmt1->get_result();
-    if ($result1->num_rows == 0) {
-        $stmt2 = $db->prepare("INSERT INTO students (studentId, firstName, lastName) VALUES (?, ?, ?)");
-        $stmt2->bind_param("sss", $studentID, $firstname, $lastname);
-        $stmt2->execute();
+	$db = mysqli_connect($dbHost, $dbUser, $dbPass, $dbDb);
+    mysqli_query($db, "CREATE TABLE IF NOT EXISTS students (studentId VARCHAR(32), firstName VARCHAR(32), lastName VARCHAR(32), PRIMARY KEY (studentId));");
+    mysqli_query($db, "CREATE TABLE IF NOT EXISTS attempts (attemptId INT NOT NULL AUTO_INCREMENT, studentId VARCHAR(32), attemptTime DATETIME, attemptNum INT, score INT, PRIMARY KEY (attemptId), FOREIGN KEY (studentId) REFERENCES students(studentId));");
+	
+	$stmt1 = mysqli_stmt_init($db); // check if student record exists
+	mysqli_stmt_prepare($stmt1, "SELECT studentId FROM students WHERE studentId=?");
+	mysqli_stmt_bind_param($stmt1, "s", $studentID);
+	mysqli_stmt_execute($stmt1);
+	mysqli_stmt_bind_result($stmt1, $result1);
+	mysqli_stmt_fetch($stmt1);
+	mysqli_stmt_close($stmt1);
+	
+    if ($result1 == null) { // no student record yet
+		$stmt2 = mysqli_stmt_init($db);
+		mysqli_stmt_prepare($stmt2, "INSERT INTO students (studentId, firstName, lastName) VALUES (?, ?, ?)");
+		mysqli_stmt_bind_param($stmt2, "sss", $studentID, $firstname, $lastname);
+		mysqli_stmt_execute($stmt2);
+		mysqli_stmt_close($stmt2);
     }
-    $stmt3 = $db->prepare("SELECT COUNT(*) FROM attempts WHERE studentId=?");
-    $stmt3->bind_param("s", $studentID);
-    $stmt3->execute();
-    $attempts = $stmt3->get_result()->fetch_row()[0];
-    if ($attempts == 2) {
+	
+	$stmt3 = mysqli_stmt_init($db); // check if student record exists
+	mysqli_stmt_prepare($stmt3, "SELECT COUNT(*) FROM attempts WHERE studentId=?");
+	mysqli_stmt_bind_param($stmt3, "s", $studentID);
+	mysqli_stmt_execute($stmt3);
+	mysqli_stmt_bind_result($stmt3, $attempts);
+	mysqli_stmt_fetch($stmt3);
+	mysqli_stmt_close($stmt3);	
+	
+	$attempts += 1;
+
+    if ($attempts == 3) {
         echo "You have already submitted 2 attempts.";
         return;
     }
     echo "<h2>Personal Details</h2>";
-
-    // echo "<tr>";
-    // echo "<td>" .$studentID. "</td>";
-    // echo "</tr>";
-
     echo "<p>Student ID: $studentID<br>\n
 		First Name: $firstname<br>\n
 		Last Name: $lastname<br>\n
 		Overall Score: $overallScore% - $passorfailed <br>\n
 		Attempts: $attempts<br>\n";
-
     echo "<p class=\"tryagain\"><a href=\"quiz.php\">Try Again?</a></p>\n";
-
-    $stmt4 = $db->prepare("INSERT INTO attempts (studentId, attemptTime, attemptNum, score) VALUES (?, ?, ?, ?)");
-    $date = date("Y-m-d H:i:s");
-    $stmt4->bind_param("ssii", $studentID, $date, $attempts, $overallScore);
-    $stmt4->execute();
-
+	
+	$stmt4 = mysqli_stmt_init($db); // insert new attempt
+	mysqli_stmt_prepare($stmt4, "INSERT INTO attempts (studentId, attemptTime, attemptNum, score) VALUES (?, ?, ?, ?)");
+	$date = date("Y-m-d H:i:s");
+	mysqli_stmt_bind_param($stmt4, "ssii", $studentID, $date, $attempts, $overallScore);
+	mysqli_stmt_execute($stmt4);
+	mysqli_stmt_close($stmt4);	
+	
     mysqli_close($db);
 }
 handleForm();
