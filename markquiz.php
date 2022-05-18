@@ -147,17 +147,17 @@ function handleForm() {
     }
 	
 	if (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"]) && isset($_POST["characteristics2_c1"]) && isset($_POST["characteristics2_c4"])) {
-        $q5 = 0;
+        $q6 = 0;
     } elseif (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"]) && isset($_POST["characteristics2_c1"])) {
-        $q5 = 0;
+        $q6 = 0;
 	} elseif (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"]) && isset($_POST["characteristics2_c4"])) {
-        $q5 = 0;
+        $q6 = 0;
 	} elseif (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"])) {
-        $q5 = 25;
+        $q6 = 25;
 	} elseif (isset($_POST["characteristics2_c2"]) or isset($_POST["characteristics2_c3"])) {
-        $q5 = 15;
+        $q6 = 15;
     } else {
-        $q5 = 0;
+        $q6 = 0;
     }
 
     // *****************************************************
