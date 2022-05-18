@@ -103,9 +103,15 @@ function handleForm() {
     } else {
         $q1 = 0;
     }
-    if (isset($_POST["characteristics_c2"]) && isset($_POST["characteristics_c3"])) {
-        $q2 = 20;
-    } elseif (isset($_POST["characteristics_c2"]) or isset($_POST["characteristics_c3"])) {
+    if (isset($_POST["characteristics_c2"]) && isset($_POST["characteristics_c3"]) && isset($_POST["characteristics_c1"]) && isset($_POST["characteristics_c4"])) {
+        $q2 = 0;
+    } elseif (isset($_POST["characteristics_c2"]) && isset($_POST["characteristics_c3"]) && isset($_POST["characteristics_c1"])) {
+        $q2 = 0;
+	} elseif (isset($_POST["characteristics_c2"]) && isset($_POST["characteristics_c3"]) && isset($_POST["characteristics_c4"])) {
+        $q2 = 0;
+	} elseif (isset($_POST["characteristics_c2"]) && isset($_POST["characteristics_c3"])) {
+        $q2 = 20;}
+	  elseif (isset($_POST["characteristics_c2"]) or isset($_POST["characteristics_c3"])) {
         $q2 = 10;
     } else {
         $q2 = 0;
@@ -133,18 +139,26 @@ function handleForm() {
         $q5_answer = "";
 		$errMsg .= "<p>Please enter an answer for 'When was Web 3.0 introduced?'.</p>\n";
     }
-    if ($q5_answer == "2006") {
-        $q5 = 10;
+
+    if ($q4_answer == "2006") {
+        $q4 = 15;
+    } else {
+        $q4 = 0;
+    }
+	if (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"]) && isset($_POST["characteristics2_c1"]) && isset($_POST["characteristics2_c4"])) {
+        $q5 = 0;
+    } elseif (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"]) && isset($_POST["characteristics2_c1"])) {
+        $q5 = 0;
+	} elseif (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"]) && isset($_POST["characteristics2_c4"])) {
+        $q5 = 0;
+	} elseif (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"])) {
+        $q5 = 25;
+	} elseif (isset($_POST["characteristics2_c2"]) or isset($_POST["characteristics2_c3"])) {
+        $q5 = 15;
     } else {
         $q5 = 0;
     }
-    if (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"])) {
-        $q6 = 25;
-    } elseif (isset($_POST["characteristics2_c2"]) or isset($_POST["characteristics2_c3"])) {
-        $q6 = 15;
-    } else {
-        $q6 = 0;
-    }
+
     // *****************************************************
     // ******* Result Display **********************************************
     // *****************************************************
