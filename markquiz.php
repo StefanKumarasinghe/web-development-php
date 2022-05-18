@@ -63,44 +63,43 @@ function handleForm() {
     $firstname = sanitise_input($firstname);
     $lastname = sanitise_input($lastname);
 
-    $error = false;
     $errMsg = "";
-    if (is_numeric($studentID) == false) {
+    if (!is_numeric($studentID)) {
         $errMsg .= "<p>Your Student ID must be a number.</p>\n";
-        $error = true;
     }
     if (!preg_match("/\d{7,10}/", $studentID)) {
         $errMsg .= "<p>Digits must be between 7-10.</p>\n";
-        $error = true;
     }
     if ($firstname == "") {
         $errMsg .= "<p>You must enter your first name.</p>\n";
-        $error = true;
     } elseif (!preg_match("/^[a-z-A-Z]*$/", $firstname)) {
         $errMsg .= "<p>Only alpha letters & hypen allowed in your first name.</p>\n";
-        $error = true;
     }
     if ($lastname == "") {
         $errMsg .= "<p>You must enter your last name.</p>\n";
     } elseif (!preg_match("/^[a-z-A-Z]*$/", $lastname)) {
-        $error = true;
         $errMsg .= "<p>Only alpha letters & hypen allowed in your last name.</p>\n";
-        $error = true;
-    }
-    if ($error == true) {
-        $errMsg .= "<p><a href=\"quiz.php\">Try Again</a></p>\n";
-        $error = false;
     }
     // *****************************************************
     // ******* Quiz Scoring Function **********************************************
     // *****************************************************
-    if (isset($_POST["web3Creation"])) {
-        $q1_answer = $_POST["web3Creation"];
+	
+	if($_POST["advantages1"] != ""){
+		$q0 = 5;
+	} else {
+		$q0 = 0;
+		$errMsg .= "<p>Please enter an answer for 'Explain the advantages of Web 3.0 over Web 2.0'.</p>\n";
+	}
+	
+    if (isset($_POST["web2Creation"])) {
+        $q1_answer = $_POST["web2Creation"];
     } else {
         $q1_answer = "";
+		$errMsg .= "<p>Please enter an answer for 'When was Web 2.0 introduced?'.</p>\n";
     }
+	
     if ($q1_answer == "1999") {
-        $q1 = 25;
+        $q1 = 20;
     } else {
         $q1 = 0;
     }
@@ -112,40 +111,52 @@ function handleForm() {
         $q2 = 0;
     }
     $q3_answer = $_POST["dropdown"];
-    if ($q3_answer == "dropdown_correct") {
+    if ($q3_answer == "abilityToEdit") {
         $q3 = 15;
     } else {
+		if($q3_answer == ""){
+			$errMsg .= "<p>Please enter an answer for 'Which from the below list is considered...'.</p>\n";
+		}
         $q3 = 0;
     }
-    if (isset($_POST["web3Creation2"])) {
-        $q4_answer = $_POST["web3Creation2"];
+	
+	if($_POST["differences"] != ""){
+		$q4 = 5;
+	} else {
+		$q4 = 0;
+		$errMsg .= "<p>Please enter an answer for 'What are the main differences between Web 1.0 and Web 2.0?'.</p>\n";
+	}
+	
+    if (isset($_POST["web3Creation"])) {
+        $q5_answer = $_POST["web3Creation"];
     } else {
-        $q4_answer = "";
+        $q5_answer = "";
+		$errMsg .= "<p>Please enter an answer for 'When was Web 3.0 introduced?'.</p>\n";
     }
-    if ($q4_answer == "2006") {
-        $q4 = 15;
-    } else {
-        $q4 = 0;
-    }
-    if (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"])) {
-        $q5 = 25;
-    } elseif (isset($_POST["characteristics2_c2"]) or isset($_POST["characteristics2_c3"])) {
-        $q5 = 15;
+    if ($q5_answer == "2006") {
+        $q5 = 10;
     } else {
         $q5 = 0;
+    }
+    if (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"])) {
+        $q6 = 25;
+    } elseif (isset($_POST["characteristics2_c2"]) or isset($_POST["characteristics2_c3"])) {
+        $q6 = 15;
+    } else {
+        $q6 = 0;
     }
     // *****************************************************
     // ******* Result Display **********************************************
     // *****************************************************
-    $overallScore = $q1 + $q2 + $q3 + $q4 + $q5;
-    $passorfailed = "";
-    if ($overallScore <= 50) {
-        $passorfailed = "FAILED";
-    } else {
-        $passorfailed = "PASSED";
-    }
-
-    if ($errMsg != "") {
+    $overallScore = $q0 + $q1 + $q2 + $q3 + $q4 + $q5 + $q6;
+	$quizResult = $overallScore < 50 ? "FAILED" : "PASSED";
+	
+	if($overallScore == 0){
+		$errMsg .= "<p>Your score was 0. Please try again</p>\n";
+	}
+	
+	if ($errMsg != "") {
+		$errMsg .= "<p><a href=\"quiz.php\">Try Again</a></p>\n";
         echo $errMsg;
         return;
     }
@@ -184,11 +195,12 @@ function handleForm() {
         echo "You have already submitted 2 attempts.";
         return;
     }
+	
     echo "<h2>Personal Details</h2>";
     echo "<p>Student ID: $studentID<br>\n
 		First Name: $firstname<br>\n
 		Last Name: $lastname<br>\n
-		Overall Score: $overallScore% - $passorfailed <br>\n
+		Overall Score: $overallScore% - $quizResult <br>\n
 		Attempts: $attempts<br>\n";
     echo "<p class=\"tryagain\"><a href=\"quiz.php\">Try Again?</a></p>\n";
 	

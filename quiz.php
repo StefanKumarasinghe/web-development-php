@@ -20,7 +20,6 @@
             <h1>Quiz Time!</h1>
             <p>How long were you paying attention for?</p>
 			<!-- Quiz section -->
-<!--        <form method="POST" action="https://mercury.swin.edu.au/it000000/formtest.php"> -->
             <form method="POST" action="markquiz.php" novalidate="novalidate" id="regform">
                 <div class="flex-container-nowrap">
                     <div class="w-75">
@@ -41,19 +40,19 @@
                             <fieldset>
                                 <legend>Text Based Questions</legend>
                                 <label class="block-label questions" for="advantages1">Explain the advantages of Web 3.0 over Web 2.0</label>
-                                <textarea rows="10" class="block" id="advantages1" placeholder="Please type the answer to question here..." name="Question1"></textarea>
+                                <textarea rows="10" class="block" id="advantages1" placeholder="Please type the answer to question here..." name="advantages1"></textarea>
                             </fieldset>
 							<!-- MCQ section -->
                             <fieldset>
                                 <legend>MCQs for you</legend>
                                 <p class="questions">When was Web 2.0 introduced?</p>
-                                <input type="radio" value="1970" id="creation1" name="web3Creation">
+                                <input type="radio" value="1970" id="creation1" name="web2Creation">
 								<label class="inline-label" for="creation1">1970</label>
-                                <input type="radio" value="1999" id="creation2" name="web3Creation">
+                                <input type="radio" value="1999" id="creation2" name="web2Creation">
 								<label class="inline-label" for="creation2">1999</label>
-                                <input type="radio" value="2003" id="creation3" name="web3Creation">
+                                <input type="radio" value="2003" id="creation3" name="web2Creation">
 								<label class="inline-label" for="creation3">2003</label>
-                                <input type="radio" value="2006" id="creation4" name="web3Creation">
+                                <input type="radio" value="2006" id="creation4" name="web2Creation">
 								<label class="inline-label" for="creation4">2006</label>
                                 <p class="questions">What are characteristics of Web 2.0? Tick everything that applies</p>
                                 <input type="checkbox" id="checkbox1" name="characteristics" value="Rich user experience">
@@ -67,9 +66,9 @@
                                 <p class="questions" >Which from the below list is considered...</p>
                                 <select name="dropdown" required>
                                     <option value="">Please select an option</option>
-                                    <option value="">User accessibility</option>
-                                    <option value="">Bandwidth requirements</option>
-                                    <option value="dropdown_correct">Ability to edit</option>
+                                    <option value="userAccessibility">User accessibility</option>
+                                    <option value="bandwidthRequirements">Bandwidth requirements</option>
+                                    <option value="abilityToEdit">Ability to edit</option>
                                 </select>
                             </fieldset>
                         </div>
@@ -78,20 +77,20 @@
 						<!-- Advanced questions part 1 -->
                         <fieldset>
                             <legend>Advance Questions Part 1</legend>
-                            <label class="block-label questions" for="Question1">What are the main differences between Web 1.0 and Web 2.0?</label>
-                            <textarea rows="10" class="block" id="Question1" placeholder="Please type the answer to question here..." name="Question1"></textarea>
+                            <label class="block-label questions" for="differences">What are the main differences between Web 1.0 and Web 2.0?</label>
+                            <textarea rows="10" class="block" id="differences" placeholder="Please type the answer to question here..." name="differences"></textarea>
                         </fieldset>
 						<!-- Advanced questions part 2 -->
                         <fieldset>
                             <legend>Advance Question 2</legend>
                             <p class="questions">When was Web 3.0 introduced?</p>
-                            <input type="radio" value="1970" id="creation1_2" name="web3Creation2">
+                            <input type="radio" value="1970" id="creation1_2" name="web3Creation">
 							<label class="inline-label" for="creation1_2">1970</label>
-                            <input type="radio" value="1987" id="creation2_2" name="web3Creation2">
+                            <input type="radio" value="1987" id="creation2_2" name="web3Creation">
 							<label class="inline-label" for="creation2_2">1987</label>
-                            <input type="radio" value="2003" id="creation3_2" name="web3Creation2">
+                            <input type="radio" value="2003" id="creation3_2" name="web3Creation">
 							<label class="inline-label" for="creation3_2">2003</label>
-                            <input type="radio" value="2006" id="creation4_2" name="web3Creation2">
+                            <input type="radio" value="2006" id="creation4_2" name="web3Creation">
 							<label class="inline-label" for="creation4_2">2006</label>
                             <p class="questions">What are functions of Web 3.0? Tick everything that applies</p>
                             <input type="checkbox" id="checkbox1_2" name="characteristics2" value="Connectivity">
