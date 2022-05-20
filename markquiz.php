@@ -153,7 +153,7 @@ function handleForm() {
 	} elseif (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"]) && isset($_POST["characteristics2_c4"])) {
         $q6 = 0;
 	} elseif (isset($_POST["characteristics2_c2"]) && isset($_POST["characteristics2_c3"])) {
-        $q6 = 25;
+        $q6 = 20;
 	} elseif (isset($_POST["characteristics2_c2"]) or isset($_POST["characteristics2_c3"])) {
         $q6 = 15;
     } else {
@@ -164,14 +164,14 @@ function handleForm() {
     // ******* Result Display **********************************************
     // *****************************************************
     $overallScore = $q0 + $q1 + $q2 + $q3 + $q4 + $q5 + $q6;
-	$quizResult = $overallScore < 50 ? "FAILED" : "PASSED";
+	$quizResult = $overallScore < 50 ? "<a class=\"failed\">FAILED</a>" : "<a class=\"passed\">PASSED</a>";
 	
 	if($overallScore == 0){
 		$errMsg .= "<p>Your score was 0. Please try again</p>\n";
 	}
 	
 	if ($errMsg != "") {
-		$errMsg .= "<p><a href=\"quiz.php\">Try Again</a></p>\n";
+		$errMsg .= "<p><a href=\"quiz.php\" class=\"tryagain\">Try Again?</a></p>\n";
         echo $errMsg;
         return;
     }
@@ -212,12 +212,12 @@ function handleForm() {
     }
 	
     echo "<h2>Personal Details</h2>";
-    echo "<p>Student ID: $studentID<br>\n
-		First Name: $firstname<br>\n
-		Last Name: $lastname<br>\n
-		Overall Score: $overallScore% - $quizResult <br>\n
-		Attempts: $attempts<br>\n";
-    echo "<p class=\"tryagain\"><a href=\"quiz.php\">Try Again?</a></p>\n";
+    echo "<p><a class=\"personalinfo\">Student ID:</a> <a class=\"attemptinfo\">$studentID</a> <br>\n
+		<a class=\"personalinfo\">First Name:</a> <a class=\"attemptinfo\">$firstname</a> <br>\n
+		<a class=\"personalinfo\">Last Name:</a> <a class=\"attemptinfo\">$lastname</a> <br>\n
+		<a class=\"personalinfo\">Overall Score:</a> <a class=\"attemptinfo\">$overallScore%</a> - $quizResult <br>\n
+		<a class=\"personalinfo\">Attempts:</a> <a class=\"attemptinfo\">$attempts</a><br>\n";
+    echo "<br/><p><a href=\"quiz.php\" class=\"tryagain\">Try Again?</a></p>\n";
 	
 	$stmt4 = mysqli_stmt_init($db); // insert new attempt
 	mysqli_stmt_prepare($stmt4, "INSERT INTO attempts (studentId, attemptTime, attemptNum, score) VALUES (?, ?, ?, ?)");

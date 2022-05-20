@@ -480,16 +480,35 @@ details summary {
     width:30vw;
     display:block;
     text-align:center;
-    text-decoration:none;
-   
+    text-decoration:none;  
 }
 
 .tryagain {
-    background-color: yellow;
-    padding: 3%;
+    background-color: black;
+    padding: 1%;
     font-size: 15px;
-    margin-top: 2%;
+    margin-top: 4%;
     border: none;
-    width: 25%;
+    color: white;
+    text-decoration: none;
+    width: 15%;
     text-align: center
+}
+
+.failed {
+    color: red;
+}
+.passed {
+    color: green;
+}
+
+.attemptinfo {
+    font-family: Consolas;
+    font-weight: 300;
+    font-size: 20px;
+}
+.personalinfo {
+    font-weight: 900;
+    font-size: 20px;
+    color: black;
 }
