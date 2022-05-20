@@ -116,6 +116,11 @@ function handleForm() {
     } else {
         $q2 = 0;
     }
+	
+	if(!isset($_POST["characteristics_c1"]) && !isset($_POST["characteristics_c2"]) && !isset($_POST["characteristics_c3"]) && !isset($_POST["characteristics_c4"])){
+		$errMsg .= "<p>Please enter an answer for 'What are functions of Web 3.0?'.</p>\n";
+	}
+	
     $q3_answer = $_POST["dropdown"];
     if ($q3_answer == "abilityToEdit") {
         $q3 = 15;
@@ -159,6 +164,10 @@ function handleForm() {
     } else {
         $q6 = 0;
     }
+	
+	if(!isset($_POST["characteristics2_c1"]) && !isset($_POST["characteristics2_c2"]) && !isset($_POST["characteristics2_c3"]) && !isset($_POST["characteristics2_c4"])){
+		$errMsg .= "<p>Please enter an answer for 'What are functions of Web 3.0?'.</p>\n";
+	}
 
     // *****************************************************
     // ******* Result Display **********************************************
