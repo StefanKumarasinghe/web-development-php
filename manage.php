@@ -79,7 +79,24 @@ if (@mysqli_num_rows($result) > 0) {
   echo "<p class='warning message'>Sorry, unable to verify you as an authorised user</p>";
 }
 }
+$didDelete = false;
 if ($verified) {
+	if (isset($_GET["student_delete"])) {
+  $studentID_delete = sanitize_input($_GET["student_delete"]);
+  if (!empty($studentID_delete)){
+    $sql = "DELETE FROM attempts where studentId=?";
+    $result = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($result,'s',$studentID_delete);
+    mysqli_stmt_execute($result);
+ 
+    if ( mysqli_stmt_execute($result)) {
+		$didDelete = true;      
+    }
+  }
+}
+
+
+
   $sql = "SELECT students.studentId as ID, firstName, lastName,score FROM students inner join attempts on students.studentId = attempts.studentId;";
   $result = mysqli_query($conn, $sql);
 ?>
@@ -231,19 +248,8 @@ else
 </form>
 <?php
 
-if (isset($_GET["student_delete"])) {
-  $studentID_delete = sanitize_input($_GET["student_delete"]);
-  if (!empty($studentID_delete)){
-    $sql = "DELETE FROM attempts where studentId=?";
-    $result = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($result,'s',$studentID_delete);
-    mysqli_stmt_execute($result);
- 
-    if ( mysqli_stmt_execute($result)) {
-      echo "<p class='success'>Query has been processed</p>";
-      
-    }
-  }
+if($didDelete){
+    echo "<p class='success'>Query has been processed</p>";
 }
 
 ?>
