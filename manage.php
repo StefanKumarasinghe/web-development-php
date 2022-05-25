@@ -8,9 +8,9 @@ session_start()
        <title>
            Administrator's view |  Developers
        </title>
-       <meta charset="utf-8" />
-       <meta name="description" content="Manage.php page to configure and view results and statistics" />
-       <link rel="stylesheet" href="style.css" />
+       <meta charset="utf-8">
+       <meta name="description" content="Manage.php page to configure and view results and statistics">
+       <link rel="stylesheet" href="style.css">
       </head>
 
        
@@ -18,19 +18,16 @@ session_start()
    <body>
      
    <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "assignment";
+	include("settings.php");
 
-function sanatize_input($data) {
+function sanitize_input($data){
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($dbHost, $dbUser, $dbPass, $dbDb);
 
 // Check connection
 if (!$conn) {
@@ -64,11 +61,13 @@ echo "<p class='status'>Connected successfully</p>";
 </div></div>
 <?php
 if (isset($_POST["password"])) {
-  $password = sanatize_input($_POST["password"]);
+  $password = sanitize_input($_POST["password"]);
   if (isset($_POST["username"])) {
-  $username = sanatize_input($_POST["username"]);
+  $username = sanitize_input($_POST["username"]);
   }
-$sql = "SELECT adminId from admin where  password_hash = ? and username = ?;";
+mysqli_query($conn, "CREATE TABLE IF NOT EXISTS `admin` (`adminId` bigint(20) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL);");
+
+$sql = "SELECT adminId from admin where password = ? and username = ?;";
 $result = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($result,'ss',$password,$username);
 mysqli_stmt_execute($result);
@@ -81,11 +80,11 @@ if (@mysqli_num_rows($result) > 0) {
 }
 }
 if ($verified) {
-  $sql = "SELECT students.studentId as ID, firstName, lastName,score FROM students inner join attempts on students.studentId = attempts.studentId   ";
+  $sql = "SELECT students.studentId as ID, firstName, lastName,score FROM students inner join attempts on students.studentId = attempts.studentId;";
   $result = mysqli_query($conn, $sql);
 ?>
    </div>
- <div id ="main">
+ <div id="main">
  <h2>Developer's mode | Manage & Analytics</h2>
 
  <h3>All Attempts</h3>
@@ -104,7 +103,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<tr><td>#" . $row["ID"]. "</td><td>" . $row["firstName"]. " " . $row["lastName"]. "</td></tr>";
   }
 } else {
-  echo "<p class='warning' >There are no records of attempts so far...</p>";
+  echo "<p class='warning'>There are no records of attempts so far...</p>";
 }
 
 ?>
@@ -113,23 +112,23 @@ if (mysqli_num_rows($result) > 0) {
 <h3>Attempts done by a given student</h3>
 <form action ="manage.php">
 <p>Please enter the student ID of the student. It doesn't have to be the exact. What about the first 3 digits?</p>
-<input type="text" name="student_attempts" placeholder="Enter student ID" />
-<select  name="student_order"  >
+<input type="text" name="student_attempts" placeholder="Enter student ID">
+<select name="student_order">
 <option value="">Sort by A-Z</option>
 <option value="score">By Score (Highest)</option>
 <option value="name">By Name</option>
 <option value="id">By ID</option>
 </select>
-<input type="submit" value="Search" />
+<input type="submit" value="Search">
 </form>
 <?php
 
 
 if (isset($_GET["student_attempts"])) {
-    $studentID = sanatize_input($_GET["student_attempts"]);
+    $studentID = sanitize_input($_GET["student_attempts"]);
     $studentID = '%'.$studentID.'%';
     if (isset($_GET["student_order"]))
-    $order = sanatize_input($_GET["student_order"]);
+    $order = sanitize_input($_GET["student_order"]);
     switch ($order){
     case "score": 
     $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ? ORDER BY score DESC";
@@ -233,7 +232,7 @@ else
 <?php
 
 if (isset($_GET["student_delete"])) {
-  $studentID_delete = sanatize_input($_GET["student_delete"]);
+  $studentID_delete = sanitize_input($_GET["student_delete"]);
   if (!empty($studentID_delete)){
     $sql = "DELETE FROM attempts where studentId=?";
     $result = mysqli_prepare($conn, $sql);
@@ -262,12 +261,12 @@ if (isset($_GET["student_delete"])) {
 <?php
 
 if (isset($_GET["student_change"])) {
-  $studentID_change = sanatize_input($_GET["student_change"]);
+  $studentID_change = sanitize_input($_GET["student_change"]);
   if (isset($_GET["student_score"])) {
-    $studentID_score = sanatize_input($_GET["student_score"]);
+    $studentID_score = sanitize_input($_GET["student_score"]);
   }  
   if (isset($_GET["student_attemptNum"])) {
-    $student_attemptNum = sanatize_input($_GET["student_attemptNum"]);
+    $student_attemptNum = sanitize_input($_GET["student_attemptNum"]);
   } 
   
   if (!empty($studentID_change)){
