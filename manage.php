@@ -3,7 +3,7 @@ session_start()
 ?>
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
    <head>
        <title>
            Administrator's view |  Developers
@@ -44,7 +44,7 @@ echo "<p class='status'>Connected successfully</p>";
   }
   if (!$verified) {
   ?> 
-     <div class="opening-block"><div><h1>DEVELOPER'S MODE</h1>
+     <div class="opening-block"><h1>DEVELOPER'S MODE</h1>
   <p class="intro-message" >Manage & Analytics mode...</p>
   <p>*Requires administration rights and login credits to login*</p>
 </div><div>
@@ -53,12 +53,12 @@ echo "<p class='status'>Connected successfully</p>";
   <label for="password">Username : </label> <input type="text" class="username" name="username" id="username"  placeholder="Username" /><label for="password">Password : </label>
     <input type="password" name="password" id="password"  placeholder="Secret key" />
     <br/>
-    <input type="submit" id="auth" value="Authenticate" /><div>
+    <input type="submit" id="auth" value="Authenticate" />
+	</div>
 </form>
 <?php 
   }
 ?>
-</div></div>
 <?php
 if (isset($_POST["password"])) {
   $password = sanitize_input($_POST["password"]);
@@ -100,7 +100,6 @@ if ($verified) {
   $sql = "SELECT students.studentId as ID, firstName, lastName,score FROM students inner join attempts on students.studentId = attempts.studentId;";
   $result = mysqli_query($conn, $sql);
 ?>
-   </div>
  <div id="main">
  <h2>Developer's mode | Manage & Analytics</h2>
 
@@ -119,13 +118,15 @@ if (mysqli_num_rows($result) > 0) {
   foreach ($result as $row) {
     echo "<tr><td>#" . $row["ID"]. "</td><td>" . $row["firstName"]. " " . $row["lastName"]. "</td></tr>";
   }
+?>
+</table>
+<?php
 } else {
   echo "<p class='warning'>There are no records of attempts so far...</p>";
 }
 
 ?>
-</table>
-<br/>
+<br>
 <h3>Attempts done by a given student</h3>
 <form action ="manage.php">
 <p>Please enter the student ID of the student. It doesn't have to be the exact. What about the first 3 digits?</p>
@@ -139,7 +140,6 @@ if (mysqli_num_rows($result) > 0) {
 <input type="submit" value="Search">
 </form>
 <?php
-
 
 if (isset($_GET["student_attempts"])) {
     $studentID = sanitize_input($_GET["student_attempts"]);
@@ -182,9 +182,9 @@ if (isset($_GET["student_attempts"])) {
     } else {
       echo "<p class='warning' >There are no records so far...</p>";
     }
+	echo "</table>";
 }
 ?>
-</table>
 <div><h3>Full Mark Students</h3></div>
 <?php
 
@@ -204,6 +204,7 @@ if (mysqli_num_rows($result) > 0) {
   foreach ($result as $row) {
     echo "<tr><td>#" . $row["ID"]. "</td><td>" . $row["firstName"]. " " . $row["lastName"]. "</td></tr>";
   }
+  echo "</table>";
 } else {
   echo "<p class='warning' >There are no records so far...</p>";
 }
@@ -211,7 +212,6 @@ if (mysqli_num_rows($result) > 0) {
 
 
 ?>
-</table>
 <div><h3>Failed Boys</h3></div>
 <?php
 
@@ -230,7 +230,8 @@ if (mysqli_num_rows($result) > 0) {
   <?php
   foreach ($result as $row) {
     echo "<tr><td>#" . $row["ID"]. "</td><td>" . $row["firstName"]. " " . $row["lastName"]. "</td></tr>";
-  } 
+  }
+  echo "</table>";
 }
 else
 {
@@ -240,9 +241,8 @@ else
 
 
 ?>
-</table>
 <h3>Delete Attempts for a USER</h3>
-<form action = "" method = "GET" >
+<form method = "GET" >
 <input type="text" name="student_delete" placeholder="Enter student ID to DELETE" />
 <input type="submit" class="delete-btn" value="CONFIRM DELETE" />
 </form>
@@ -254,7 +254,7 @@ if($didDelete){
 
 ?>
 <h3>Change Score using StudentID, Attempt & the new score</h3>
-<form action = "" method = "GET" >
+<form action="manage.php" method = "GET" >
 <input type="text" name="student_change" placeholder="Enter student ID to CHANGE" />
 <input type="number" name="student_attemptNum" max ="2" min="1" step="1" placeholder="Enter the Attempt" />
 <input type="number" name="student_score" max ="100" min="0" step="1" placeholder="Enter the new score %" />
