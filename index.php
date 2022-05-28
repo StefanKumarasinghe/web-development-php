@@ -53,7 +53,7 @@
                 Web 3.0 is more stronger and powerful than Web 2.0, opening to many new features and improving user interface. Would you want to know?
             </p>
             <br>
-            <a href="topic.html" class="learn-more">Yes of Course!</a>
+            <a href="topic.php" class="learn-more">Yes of Course!</a>
         </main>
 		<!-- Page footer -->
 		<?php require("footer.inc"); ?>

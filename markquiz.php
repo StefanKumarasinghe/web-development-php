@@ -216,16 +216,22 @@ function handleForm() {
 	$attempts += 1;
 
     if ($attempts == 3) {
-        echo "You have already submitted 2 attempts.";
+        echo "<h2 >Unable to Submit</h2>";
+        echo "<p class='failed'>Reason: You have already submitted 2 attempts.</p>";
+        echo "<br/><p><a href=\"topic.php\" class=\"tryagain\">Learn More</a></p>\n";
         return;
     }
-	
-    echo "<h2>Personal Details</h2>";
+	$time = date("Y-m-d H:i:s");
+    echo "<h2 class='passed'>Successfully submited at $time</h2>";
+    echo "<h3>User information</h3>";
+
     echo "<p><a class=\"personalinfo\">Student ID:</a> <a class=\"attemptinfo\">$studentID</a> <br>\n
 		<a class=\"personalinfo\">First Name:</a> <a class=\"attemptinfo\">$firstname</a> <br>\n
 		<a class=\"personalinfo\">Last Name:</a> <a class=\"attemptinfo\">$lastname</a> <br>\n
+        <h3>Score</h3>
 		<a class=\"personalinfo\">Overall Score:</a> <a class=\"attemptinfo\">$overallScore%</a> - $quizResult <br>\n
 		<a class=\"personalinfo\">Attempts:</a> <a class=\"attemptinfo\">$attempts</a><br>\n";
+        
     echo "<br/><p><a href=\"quiz.php\" class=\"tryagain\">Try Again?</a></p>\n";
 	
 	$stmt4 = mysqli_stmt_init($db); // insert new attempt

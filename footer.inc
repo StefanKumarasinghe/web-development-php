@@ -18,10 +18,11 @@
 				<!-- Sitemap -->
                 <div>
                     <h4>Sitemap</h4>
-                    <a href="index.html">Home</a>
-                    <a href="topic.html">Topic</a>
-                    <a href="quiz.html">Quiz</a>
-                    <a href="enhancements.html">Enhancements</a>
+                    <a href="index.php">Home</a>
+                    <a href="topic.php">Topic</a>
+                    <a href="quiz.php">Quiz</a>
+                    <a href="enhancements.php">CSS Enhancements</a>
+                    <a href="phpenhancements.php">PHP</a>
                 </div>
 				<!-- Social media links -->
                 <div>

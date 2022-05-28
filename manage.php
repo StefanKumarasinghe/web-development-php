@@ -2,24 +2,46 @@
 session_start()
 ?>
 <!DOCTYPE html>
+<?php
+if (isset(($_SESSION["verified"]))){
+  if ($_SESSION["verified"]) {
+    setcookie('entries', 1, time() + (86400 * 30), "/"); // 86400 = 1 day
+    $entries = 1;
+  }
+}
+if (!(empty($_COOKIE['entries']))) {
+ $entries = $_COOKIE['entries'];
+}else {
+  setcookie('entries', 1, time() + (86400 * 30), "/"); // 86400 = 1 day
+}
+if (empty($entries)) {
+  $entries = 1;
+}
+function change() {
+$entries = $_COOKIE['entries'];
+$entries =  $entries + 1;
+setcookie('entries', $entries, time() + (86400 * 30), "/"); // 86400 = 1 day
+if ($entries > 5){
+  header('Location: '."manage.php");
+}
 
+}
+
+?>
 <html lang="en">
    <head>
-       <title>
-           Administrator's view |  Developers
-       </title>
-       <meta charset="utf-8">
-       <meta name="description" content="Manage.php page to configure and view results and statistics">
-       <link rel="stylesheet" href="style.css">
+   <meta charset="utf-8">
+        <meta name="description" content="Admin page of the website">
+        <meta name="author" content="Developers">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="images/wwwlogo.jpg">
+        <link rel="stylesheet" href="styles/Madmin.css" media="screen and (max-width:999px)">
+        <link rel="stylesheet" href="styles/admin.css"  media="screen and (min-width:999px)">
+        <title>Admin Mode | DEV</title>
       </head>
-
-       
-
-   <body>
-     
+   <body>  
    <?php
 	include("settings.php");
-
 function sanitize_input($data){
   $data = trim($data);
   $data = stripslashes($data);
@@ -28,7 +50,6 @@ function sanitize_input($data){
 }
 // Create connection
 $conn = mysqli_connect($dbHost, $dbUser, $dbPass, $dbDb);
-
 // Check connection
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
@@ -37,6 +58,18 @@ echo "<p class='status'>Connected successfully</p>";
 ?>
 
   <?php
+
+
+  if ($entries>5) {
+    echo "<div id='main'><h1>You have been locked out...</h1>
+    <p>This is mainly because you have tried to login into the system multiple times and have failed all of them</p></div>";
+  } else {
+
+
+ 
+
+ 
+
   if (isset($_SESSION["verified"])) {
     $verified = $_SESSION["verified"];
   }else {
@@ -44,7 +77,8 @@ echo "<p class='status'>Connected successfully</p>";
   }
   if (!$verified) {
   ?> 
-     <div class="opening-block"><h1>DEVELOPER'S MODE</h1>
+     <div class="opening-block">
+       <div><h1>DEVELOPER'S MODE</h1>
   <p class="intro-message" >Manage & Analytics mode...</p>
   <p>*Requires administration rights and login credits to login*</p>
 </div><div>
@@ -52,10 +86,12 @@ echo "<p class='status'>Connected successfully</p>";
 
   <label for="password">Username : </label> <input type="text" class="username" name="username" id="username"  placeholder="Username" /><label for="password">Password : </label>
     <input type="password" name="password" id="password"  placeholder="Secret key" />
+    <input type="hidden" name="entries" value = <?php echo "'"."$entries"."'" ?> />
     <br/>
     <input type="submit" id="auth" value="Authenticate" />
-	</div>
 </form>
+</div>
+</div>
 <?php 
   }
 ?>
@@ -65,8 +101,7 @@ if (isset($_POST["password"])) {
   if (isset($_POST["username"])) {
   $username = sanitize_input($_POST["username"]);
   }
-mysqli_query($conn, "CREATE TABLE IF NOT EXISTS `admin` (`adminId` bigint(20) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL);");
-
+mysqli_query($conn, "CREATE TABLE IF NOT EXISTS `admin` (`adminId` int NOT NULL PRIMARY KEY, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL);");
 $sql = "SELECT adminId from admin where password = ? and username = ?;";
 $result = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($result,'ss',$password,$username);
@@ -74,17 +109,22 @@ mysqli_stmt_execute($result);
 $result = mysqli_stmt_get_result($result);
 if (@mysqli_num_rows($result) > 0) {
   $_SESSION["verified"] = true;
+
   header('Location: '."manage.php");
 }else{
-  echo "<p class='warning message'>Sorry, unable to verify you as an authorised user</p>";
+  echo "<p class='warning message'>Sorry, unable to verify you as an authorised user. ".(5-$entries). " tries left..</p>";
+  change();
+  
+
 }
 }
 $didDelete = false;
+
 if ($verified) {
 	if (isset($_GET["student_delete"])) {
   $studentID_delete = sanitize_input($_GET["student_delete"]);
   if (!empty($studentID_delete)){
-    $sql = "DELETE FROM attempts where studentId=?";
+    $sql = "DELETE FROM attempts where studentId= ?";
     $result = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($result,'s',$studentID_delete);
     mysqli_stmt_execute($result);
@@ -100,6 +140,7 @@ if ($verified) {
   $sql = "SELECT students.studentId as ID, firstName, lastName,score FROM students inner join attempts on students.studentId = attempts.studentId;";
   $result = mysqli_query($conn, $sql);
 ?>
+
  <div id="main">
  <h2>Developer's mode | Manage & Analytics</h2>
 
@@ -129,38 +170,72 @@ if (mysqli_num_rows($result) > 0) {
 <br>
 <h3>Attempts done by a given student</h3>
 <form action ="manage.php">
-<p>Please enter the student ID of the student. It doesn't have to be the exact. What about the first 3 digits?</p>
+<p>You can either type the first name or the student ID or both partially. This uses 4 "if-conditions" to see all possibilities</p>
+<input type="text" name="studentname_attempts" placeholder="Student First Name">
 <input type="text" name="student_attempts" placeholder="Enter student ID">
+
 <select name="student_order">
 <option value="">Sort by A-Z</option>
 <option value="score">By Score (Highest)</option>
 <option value="name">By Name</option>
-<option value="id">By ID</option>
 </select>
 <input type="submit" value="Search">
 </form>
 <?php
+if ( (isset($_GET["studentname_attempts"])) or (isset($_GET["student_attempts"])))  {
 
-if (isset($_GET["student_attempts"])) {
-    $studentID = sanitize_input($_GET["student_attempts"]);
-    $studentID = '%'.$studentID.'%';
+
     if (isset($_GET["student_order"]))
     $order = sanitize_input($_GET["student_order"]);
+    if (!(empty($_GET["student_attempts"])) and !(empty($_GET["studentname_attempts"])) ) {
+    $studentName = sanitize_input($_GET["studentname_attempts"]);
+    $studentName = '%'.$studentName.'%';
+    $id = '%'.sanitize_input($_GET["student_attempts"]).'%';
+
     switch ($order){
-    case "score": 
-    $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ? ORDER BY score DESC";
-    break;
-    case "id": 
-    $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ? ORDER BY ID";
-    break;
-    case "name": 
-      $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ? ORDER BY students.firstName";
+      case "score": 
+      $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ?  and students.firstName LIKE ? ORDER BY score DESC";
       break;
-    default:
-    $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ?";
-    }
-    $result = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($result,'s', $studentID);
+      case "name": 
+        $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ? and students.firstName LIKE ? ORDER BY students.firstName";
+        break;
+      default:
+      $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ? and students.firstName LIKE ?";
+      }
+      $result = mysqli_prepare($conn, $sql);
+      mysqli_stmt_bind_param($result,'ss',$id,$studentName);
+  } else if (!(empty($_GET["student_attempts"])) and (empty($_GET["studentname_attempts"])) )
+  {
+    $id = '%'.sanitize_input($_GET["student_attempts"]).'%';
+    switch ($order){
+      case "score": 
+      $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ? ORDER BY score DESC";
+      break;
+      case "name": 
+        $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ? ORDER BY students.firstName";
+        break;
+      default:
+      $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where attempts.studentId LIKE ?";
+      }
+      $result = mysqli_prepare($conn, $sql);
+      mysqli_stmt_bind_param($result,'s', $id);
+   
+  } else {
+    $studentName = sanitize_input($_GET["studentname_attempts"]);
+    $studentName = '%'.$studentName.'%';
+    switch ($order){
+      case "score": 
+      $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where students.firstName LIKE ? ORDER BY score DESC";
+      break;
+      case "name": 
+        $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where students.firstName LIKE ? ORDER BY students.firstName";
+        break;
+      default:
+      $sql = "SELECT attempts.studentId as ID, students.firstName, students.lastName ,attemptNum,score from attempts inner JOIN students on students.studentId = attempts.studentId where students.firstName LIKE ?";
+      }
+      $result = mysqli_prepare($conn, $sql);
+      mysqli_stmt_bind_param($result,'s', $studentName);
+  }
     mysqli_stmt_execute($result);
     $result = mysqli_stmt_get_result($result);
     
@@ -185,7 +260,7 @@ if (isset($_GET["student_attempts"])) {
 	echo "</table>";
 }
 ?>
-<div><h3>Full Mark Students</h3></div>
+<div><h3>Full Mark Students ( Attempt 1 )</h3></div>
 <?php
 
 $sql = "SELECT students.studentId as ID, firstName, lastName,score FROM students inner join attempts on students.studentId = attempts.studentId where score = 100 and attemptNum=1";
@@ -212,7 +287,7 @@ if (mysqli_num_rows($result) > 0) {
 
 
 ?>
-<div><h3>Failed Boys</h3></div>
+<div><h3>Failed Students ( Final Attempt )</h3></div>
 <?php
 
 
@@ -263,7 +338,7 @@ if($didDelete){
 </form>
 
 
-
+</div>
 <?php
 
 if (isset($_GET["student_change"])) {
@@ -287,8 +362,9 @@ if (isset($_GET["student_change"])) {
   }
 }
 }
+}
 mysqli_close($conn);
 ?>
-</div>
+
 </body>
 </html>
