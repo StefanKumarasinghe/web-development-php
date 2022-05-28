@@ -1,0 +1,157 @@
+/*DESIGNED BY STEFAN RALPH*/
+@font-face {
+    font-family: Japanese;
+    src: url(JP-Light.otf);
+}
+.opening-block {
+    width:100%;
+    text-align:center;
+    padding: 17% 0;
+    height:100%;
+    margin:auto;
+    background-color:rgb(255, 255, 255) 
+}
+.opening-block h1 {
+    color:black;
+    margin:0;
+    padding-top:2%;
+    font-size:30px;
+    text-align:center;
+}
+.status {
+    background-color:rgb(0, 255, 34);
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:1%;
+    color:black;
+    margin:0;
+    font:bold 17px Japanese;
+    text-align:center;
+}
+body {
+    margin:0;
+    text-align:center;
+    font-family:Japanese;
+    font-weight:bold;
+}
+table {
+    padding:1%;
+    width:100%;
+    text-align:center;
+    border:1px solid black;
+    border-collapse:collapse;
+    margin:4% auto;
+}
+th,td {
+    padding:5px;
+    border:1px solid black;
+    text-align:center;
+    font:bold 12px Japanese;
+}
+[type="text"] {
+    text-align:center;
+    padding:1%;
+    font:bold 18px Japanese;
+    MARGIN:1%;
+    border: 1px solid black;
+}
+[type="text"].username {
+    text-align:center;
+    padding:3%;
+    font:bold 18px Japanese;
+    margin-bottom:20px;
+    border-radius:5px;
+    MARGIN:1%;
+    border:1px solid gray;
+}
+[type="number"] {
+    text-align:center;
+    padding:1%;
+    width:30%;
+    MARGIN:1%;
+    font:bold 18px Japanese;
+    border: 1px solid rgb(0, 0, 0);
+}
+.intro-message{
+    color:red;
+    text-align:center;
+    font:bold 25px Japanese;
+}
+[type="submit"] {
+    padding:1%;
+    font:bold 18px Japanese;
+    background-color:rgb(3, 255, 33);
+    color:black;
+}
+[type="submit"]#auth {
+    padding:4%;
+    margin-top:5%;
+    font:bold 18px Japanese;
+    background-color:rgb(3, 255, 33);
+    color:black;
+    border:none;
+}
+label {
+    text-align:center;
+    display:block;
+    font:bold 17px Japanese;
+    margin-bottom:10px;
+}
+[type="password"] {
+    text-align:center;
+    padding:3%;
+    font:bold 18px Japanese;
+    background-color:white;
+    border-radius:5px;
+    color:black;
+   
+    MARGIN:1%;
+    border:1px solid gray;
+}
+[type="submit"].delete-btn {
+    padding:1%;
+    font:bold 18px Japanese;
+    background-color:rgb(224, 38, 5);
+    color:white;
+    margin:1%;
+}
+select {
+    padding:1%;
+    font:bold 18px Japanese;
+}
+#main {
+    text-align:center;
+    width:80%;
+    margin:5% auto;
+}
+h2 {
+    margin-top:50px;
+    color:black;
+    font-size:25x;
+    text-align:center;
+}
+h3 {
+    color:black;
+    font-size:20px;
+    text-align:center;
+}
+.warning {
+    color:black;
+    background-color:yellow;
+    padding:1%;
+    margin:1% auto;
+}
+.success {
+    color:rgb(255, 255, 255);
+    background-color:rgb(68, 255, 65);
+    padding:1%;
+    margin:1% 0;
+}
+.message {
+    position:fixed;
+    bottom:30px;
+    width:100%;
+
+ 
+}
