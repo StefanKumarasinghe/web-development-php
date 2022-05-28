@@ -10,8 +10,8 @@
                 <a href="quiz.php">
                 Quiz
                 </a>
-                <a href="enhancements.php">
-                Enhancements
+   <a href="phpenhancements.php">
+               Enhancements
                 </a>
             </nav>
 		</header>
