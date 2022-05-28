@@ -1,9 +1,9 @@
 <?php
-session_start()
+session_start();
 ?>
 <!DOCTYPE html>
 <?php
-if (isset(($_SESSION["verified"]))){
+if (isset($_SESSION["verified"])){
   if ($_SESSION["verified"]) {
     setcookie('entries', 1, time() + (86400 * 30), "/"); // 86400 = 1 day
     $entries = 1;
