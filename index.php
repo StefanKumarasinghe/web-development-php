@@ -19,7 +19,7 @@
         <main id="indexbackground">
             <h1>Welcome</h1>
 			<!-- Paragraph 1 -->
-            <p>We use the internet for almost everything in our lives, from our day to day tasks to connecting with people around the world! We will be discussing on the topic how Web 3 is different from its precessedor, Web 2.0.  For our more information, you can watch our demonstration <a href="https://www.youtube.com/watch?v=KgNHpfn4daw">video</a></p>
+            <p>We use the internet for almost everything in our lives, from our day to day tasks to connecting with people around the world! We will be discussing on the topic how Web 3 is different from its precessedor, Web 2.0.  For our more information, you can watch our demonstration <a href="https://youtu.be/1twlGBjVs6U">video</a></p>
             <!-- Image section -->
 			<div class="flex-container-nowrap">
                 <div class="w-75">
